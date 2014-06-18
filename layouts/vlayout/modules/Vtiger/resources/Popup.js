@@ -248,14 +248,11 @@ jQuery.Class("Vtiger_Popup_Js",{
 		if(typeof eventToTrigger == 'undefined' || eventToTrigger.length <=0 ) {
 			eventToTrigger = 'postSelection'
 		}
-
 		if(typeof window == 'undefined'){
 			window = self;
 		}
 		window.close();
-                    
 		jQuery.triggerParentEvent(eventToTrigger, JSON.stringify(result));
-
 	},
 
 	getView : function(){
