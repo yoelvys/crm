@@ -118,12 +118,6 @@ Class PAC_Client_Model {
 
         return $this->getPACComboElement($sql);
     }
-    
-    public function getPACAccountCountableAll() {
-        $sql = "SELECT ctamaecon,nomcta FROM maecon order by nomcta;";
-
-        return $this->getPACComboData($sql);
-    }
 
     public function getPACComboCompanies() {
         $bd = ConnectionPAC::getInstance();
