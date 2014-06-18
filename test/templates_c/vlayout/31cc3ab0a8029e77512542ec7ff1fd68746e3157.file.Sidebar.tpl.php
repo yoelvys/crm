@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.7, created on 2014-05-28 16:18:56
+<?php /* Smarty version Smarty-3.1.7, created on 2014-06-18 21:35:48
          compiled from "/var/www/crm/includes/runtime/../../layouts/vlayout/modules/Settings/Vtiger/Sidebar.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:89338843353860c7020fa01-31651224%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '31cc3ab0a8029e77512542ec7ff1fd68746e3157' => 
     array (
       0 => '/var/www/crm/includes/runtime/../../layouts/vlayout/modules/Settings/Vtiger/Sidebar.tpl',
-      1 => 1401218526,
+      1 => 1403124778,
       2 => 'file',
     ),
   ),
@@ -15,6 +15,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.7',
+  'unifunc' => 'content_53860c702e13c',
   'variables' => 
   array (
     'QUALIFIED_MODULE' => 0,
@@ -25,8 +27,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'MENUITEM' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.7',
-  'unifunc' => 'content_53860c702e13c',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_53860c702e13c')) {function content_53860c702e13c($_smarty_tpl) {?>
 <div class="sidebarTitleBlock"><h3 class="titlePadding themeTextColor unSelectedQuickLink cursorPointer"><a href="index.php?module=Vtiger&parent=Settings&view=Index"><?php echo vtranslate('LBL_SETTINGS',$_smarty_tpl->tpl_vars['QUALIFIED_MODULE']->value);?>

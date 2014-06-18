@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.7, created on 2014-05-28 16:19:04
+<?php /* Smarty version Smarty-3.1.7, created on 2014-06-18 21:35:57
          compiled from "/var/www/crm/includes/runtime/../../layouts/vlayout/modules/Settings/LayoutEditor/Index.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:4743073653860c7855c710-65189611%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '278b7997410652854b05b9b88cd39ea2dd15d3f5' => 
     array (
       0 => '/var/www/crm/includes/runtime/../../layouts/vlayout/modules/Settings/LayoutEditor/Index.tpl',
-      1 => 1401218526,
+      1 => 1403124778,
       2 => 'file',
     ),
   ),
@@ -15,6 +15,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.7',
+  'unifunc' => 'content_53860c78c2af0',
   'variables' => 
   array (
     'SELECTED_MODULE_NAME' => 0,
@@ -48,8 +50,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'TYPE_INFO_VALUE' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.7',
-  'unifunc' => 'content_53860c78c2af0',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_53860c78c2af0')) {function content_53860c78c2af0($_smarty_tpl) {?>
 <div class="container-fluid" id="layoutEditorContainer"><input id="selectedModuleName" type="hidden" value="<?php echo $_smarty_tpl->tpl_vars['SELECTED_MODULE_NAME']->value;?>

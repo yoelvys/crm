@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.7, created on 2014-05-27 20:37:33
+<?php /* Smarty version Smarty-3.1.7, created on 2014-06-18 21:35:01
          compiled from "/var/www/crm/includes/runtime/../../layouts/vlayout/modules/Vtiger/RecentComments.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:8810879255384f78d8a4b04-49692666%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '4a40fb203992db161ba17e3f54cf1443e5f910e8' => 
     array (
       0 => '/var/www/crm/includes/runtime/../../layouts/vlayout/modules/Vtiger/RecentComments.tpl',
-      1 => 1401218526,
+      1 => 1403124778,
       2 => 'file',
     ),
   ),
@@ -15,6 +15,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.7',
+  'unifunc' => 'content_5384f78d9c3b7',
   'variables' => 
   array (
     'MODULE_NAME' => 0,
@@ -30,8 +32,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'PAGING_MODEL' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.7',
-  'unifunc' => 'content_5384f78d9c3b7',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_5384f78d9c3b7')) {function content_5384f78d9c3b7($_smarty_tpl) {?>
 <?php $_smarty_tpl->tpl_vars["COMMENT_TEXTAREA_DEFAULT_ROWS"] = new Smarty_variable("2", null, 0);?><div class="commentContainer"><div class="commentTitle row-fluid"><div class="addCommentBlock"><div><textarea name="commentcontent" class="commentcontent"  placeholder="<?php echo vtranslate('LBL_ADD_YOUR_COMMENT_HERE',$_smarty_tpl->tpl_vars['MODULE_NAME']->value);?>
