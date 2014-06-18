@@ -252,7 +252,7 @@ jQuery.Class("Vtiger_Popup_Js",{
 		if(typeof window == 'undefined'){
 			window = self;
 		}
-		/*window.close();*/
+		window.close();
                     
 		jQuery.triggerParentEvent(eventToTrigger, JSON.stringify(result));
 
