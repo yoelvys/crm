@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.7, created on 2014-06-11 20:21:42
+<?php /* Smarty version Smarty-3.1.7, created on 2014-06-18 20:58:54
          compiled from "/var/www/crm/includes/runtime/../../layouts/vlayout/modules/Vtiger/uitypes/PACPromotions.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:15099723605398ba1678d262-17298649%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'f5bb28c1e47ae4343a71af47cf1b3eb1948abe3c' => 
     array (
       0 => '/var/www/crm/includes/runtime/../../layouts/vlayout/modules/Vtiger/uitypes/PACPromotions.tpl',
-      1 => 1402518098,
+      1 => 1403124778,
       2 => 'file',
     ),
   ),
