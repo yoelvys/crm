@@ -21,9 +21,9 @@ class Contacts_Save_Action extends Vtiger_Save_Action {
 		if ($salutationType === '--None--') {
 			$request->set('salutationtype', '');
 		}
-		/*$client = PAC_Client_Model::getInstance();
+		$client = PAC_Client_Model::getInstance();
 
-		$client->process($request);*/
+		$client->process($request);
              
 		parent::process($request);
 	}
