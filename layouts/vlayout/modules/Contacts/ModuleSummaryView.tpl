@@ -24,9 +24,14 @@
                                             <td class="fieldLabel" style="width:30%"><label class="muted">{vtranslate($FIELD_MODEL->get('label'),$MODULE_NAME)}</label></td>
                                             <td class="fieldValue" style="width:70%">
                                                     <div class="row-fluid">
+                                                        {if $FIELD_NAME eq 'pac_tipo_persona' }
+                                                                <span>{$FIELD_VALUE}</span>
+                                                                {continue}
+                                                        {/if}        
                                                             <span class="value span10" style="word-wrap: break-word;">
                                                                     {include file=$FIELD_MODEL->getUITypeModel()->getDetailViewTemplateName()|@vtemplate_path FIELD_MODEL=$FIELD_MODEL USER_MODEL=$USER_MODEL MODULE=$MODULE_NAME RECORD=$RECORD}
                                                             </span>
+                                                            
                                                             {if $FIELD_MODEL->isEditable() eq 'true' && ($FIELD_MODEL->getFieldDataType()!=Vtiger_Field_Model::REFERENCE_TYPE) && $IS_AJAX_ENABLED && $FIELD_MODEL->isAjaxEditable() eq 'true' && $FIELD_MODEL->get('uitype') neq 69}
                                                                     <span class="summaryViewEdit cursorPointer span2">
                                                                             <i class="icon-pencil" title="{vtranslate('LBL_EDIT',$MODULE_NAME)}"></i>

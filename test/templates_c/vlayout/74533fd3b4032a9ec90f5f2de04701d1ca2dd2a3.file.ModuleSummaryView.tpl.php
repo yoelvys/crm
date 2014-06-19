@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.7, created on 2014-06-19 15:02:24
+<?php /* Smarty version Smarty-3.1.7, created on 2014-06-19 16:18:57
          compiled from "/var/www/crm/includes/runtime/../../layouts/vlayout/modules/Contacts/ModuleSummaryView.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:12972403025384f78bc1f818-32048472%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '74533fd3b4032a9ec90f5f2de04701d1ca2dd2a3' => 
     array (
       0 => '/var/www/crm/includes/runtime/../../layouts/vlayout/modules/Contacts/ModuleSummaryView.tpl',
-      1 => 1403189912,
+      1 => 1403194735,
       2 => 'file',
     ),
   ),
@@ -47,7 +47,8 @@ foreach ($_from as $_smarty_tpl->tpl_vars['FIELD_MODEL']->key => $_smarty_tpl->t
 $_smarty_tpl->tpl_vars['FIELD_MODEL']->_loop = true;
  $_smarty_tpl->tpl_vars['FIELD_NAME']->value = $_smarty_tpl->tpl_vars['FIELD_MODEL']->key;
 ?><?php if ($_smarty_tpl->tpl_vars['FIELD_MODEL']->value->get('name')!='modifiedtime'&&$_smarty_tpl->tpl_vars['FIELD_MODEL']->value->get('name')!='createdtime'&&(($_smarty_tpl->tpl_vars['FIELD_VALUE']->value=='Natural'&&($_smarty_tpl->tpl_vars['FIELD_NAME']->value!='pac_razon_social'))||($_smarty_tpl->tpl_vars['FIELD_VALUE']->value!='Natural'&&($_smarty_tpl->tpl_vars['FIELD_NAME']->value!='firstname'&&$_smarty_tpl->tpl_vars['FIELD_NAME']->value!='lastname')))){?><tr class="summaryViewEntries"><td class="fieldLabel" style="width:30%"><label class="muted"><?php echo vtranslate($_smarty_tpl->tpl_vars['FIELD_MODEL']->value->get('label'),$_smarty_tpl->tpl_vars['MODULE_NAME']->value);?>
-</label></td><td class="fieldValue" style="width:70%"><div class="row-fluid"><span class="value span10" style="word-wrap: break-word;"><?php echo $_smarty_tpl->getSubTemplate (vtemplate_path($_smarty_tpl->tpl_vars['FIELD_MODEL']->value->getUITypeModel()->getDetailViewTemplateName()), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array('FIELD_MODEL'=>$_smarty_tpl->tpl_vars['FIELD_MODEL']->value,'USER_MODEL'=>$_smarty_tpl->tpl_vars['USER_MODEL']->value,'MODULE'=>$_smarty_tpl->tpl_vars['MODULE_NAME']->value,'RECORD'=>$_smarty_tpl->tpl_vars['RECORD']->value), 0);?>
+</label></td><td class="fieldValue" style="width:70%"><div class="row-fluid"><?php if ($_smarty_tpl->tpl_vars['FIELD_NAME']->value=='pac_tipo_persona'){?><span><?php echo $_smarty_tpl->tpl_vars['FIELD_VALUE']->value;?>
+</span><?php continue 1?><?php }?><span class="value span10" style="word-wrap: break-word;"><?php echo $_smarty_tpl->getSubTemplate (vtemplate_path($_smarty_tpl->tpl_vars['FIELD_MODEL']->value->getUITypeModel()->getDetailViewTemplateName()), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array('FIELD_MODEL'=>$_smarty_tpl->tpl_vars['FIELD_MODEL']->value,'USER_MODEL'=>$_smarty_tpl->tpl_vars['USER_MODEL']->value,'MODULE'=>$_smarty_tpl->tpl_vars['MODULE_NAME']->value,'RECORD'=>$_smarty_tpl->tpl_vars['RECORD']->value), 0);?>
 </span><?php if ($_smarty_tpl->tpl_vars['FIELD_MODEL']->value->isEditable()=='true'&&($_smarty_tpl->tpl_vars['FIELD_MODEL']->value->getFieldDataType()!=Vtiger_Field_Model::REFERENCE_TYPE)&&$_smarty_tpl->tpl_vars['IS_AJAX_ENABLED']->value&&$_smarty_tpl->tpl_vars['FIELD_MODEL']->value->isAjaxEditable()=='true'&&$_smarty_tpl->tpl_vars['FIELD_MODEL']->value->get('uitype')!=69){?><span class="summaryViewEdit cursorPointer span2"><i class="icon-pencil" title="<?php echo vtranslate('LBL_EDIT',$_smarty_tpl->tpl_vars['MODULE_NAME']->value);?>
 "></i></span><span class="hide edit span10"><?php echo $_smarty_tpl->getSubTemplate (vtemplate_path($_smarty_tpl->tpl_vars['FIELD_MODEL']->value->getUITypeModel()->getTemplateName(),$_smarty_tpl->tpl_vars['MODULE_NAME']->value), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array('FIELD_MODEL'=>$_smarty_tpl->tpl_vars['FIELD_MODEL']->value,'USER_MODEL'=>$_smarty_tpl->tpl_vars['USER_MODEL']->value,'MODULE'=>$_smarty_tpl->tpl_vars['MODULE_NAME']->value), 0);?>
 <?php if ($_smarty_tpl->tpl_vars['FIELD_MODEL']->value->getFieldDataType()=='multipicklist'){?><input type="hidden" class="fieldname" value='<?php echo $_smarty_tpl->tpl_vars['FIELD_MODEL']->value->get('name');?>
