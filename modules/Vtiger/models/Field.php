@@ -163,7 +163,10 @@ class Vtiger_Field_Model extends Vtiger_Field {
                 $fieldDataType = 'PACPersonType';
             } else if ($uiType == '1002') {
                 $fieldDataType = 'PACCeduleRUC';
-            } else if ($uiType == '1004') {
+            } else if ($uiType == '1003') {
+                $fieldDataType = 'PACCode';
+            } 
+            else if ($uiType == '1004') {
                 $fieldDataType = 'PACCategory';
             } else if ($uiType == '1005') {
                 $fieldDataType = 'PACClientType';

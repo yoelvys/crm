@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.7, created on 2014-05-28 16:37:15
+<?php /* Smarty version Smarty-3.1.7, created on 2014-06-19 15:23:08
          compiled from "/var/www/crm/includes/runtime/../../layouts/vlayout/modules/Vtiger/DetailViewBlockView.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:123714348538610bbc43d93-71555562%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '6b329e15016a59eebac02e1426b8844e094c8244' => 
     array (
       0 => '/var/www/crm/includes/runtime/../../layouts/vlayout/modules/Vtiger/DetailViewBlockView.tpl',
-      1 => 1401218526,
+      1 => 1403191380,
       2 => 'file',
     ),
   ),
@@ -15,18 +15,22 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.7',
+  'unifunc' => 'content_538610bbecdd0',
   'variables' => 
   array (
     'RECORD_STRUCTURE' => 0,
+    'FIELD_MODEL_LIST' => 0,
+    'FIELD_NAME' => 0,
+    'FIELD_MODEL' => 0,
     'BLOCK_LABEL_KEY' => 0,
     'BLOCK_LIST' => 0,
     'BLOCK' => 0,
-    'FIELD_MODEL_LIST' => 0,
     'USER_MODEL' => 0,
     'DAY_STARTS' => 0,
     'IS_HIDDEN' => 0,
     'MODULE_NAME' => 0,
-    'FIELD_MODEL' => 0,
+    'FIELD_VALUE' => 0,
     'TAXCLASS_DETAILS' => 0,
     'tax' => 0,
     'COUNTER' => 0,
@@ -39,11 +43,21 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'IS_AJAX_ENABLED' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.7',
-  'unifunc' => 'content_538610bbecdd0',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_538610bbecdd0')) {function content_538610bbecdd0($_smarty_tpl) {?>
 <?php  $_smarty_tpl->tpl_vars['FIELD_MODEL_LIST'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['FIELD_MODEL_LIST']->_loop = false;
+ $_smarty_tpl->tpl_vars['BLOCK_LABEL_KEY'] = new Smarty_Variable;
+ $_from = $_smarty_tpl->tpl_vars['RECORD_STRUCTURE']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+foreach ($_from as $_smarty_tpl->tpl_vars['FIELD_MODEL_LIST']->key => $_smarty_tpl->tpl_vars['FIELD_MODEL_LIST']->value){
+$_smarty_tpl->tpl_vars['FIELD_MODEL_LIST']->_loop = true;
+ $_smarty_tpl->tpl_vars['BLOCK_LABEL_KEY']->value = $_smarty_tpl->tpl_vars['FIELD_MODEL_LIST']->key;
+?><?php  $_smarty_tpl->tpl_vars['FIELD_MODEL'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['FIELD_MODEL']->_loop = false;
+ $_smarty_tpl->tpl_vars['FIELD_NAME'] = new Smarty_Variable;
+ $_from = $_smarty_tpl->tpl_vars['FIELD_MODEL_LIST']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+foreach ($_from as $_smarty_tpl->tpl_vars['FIELD_MODEL']->key => $_smarty_tpl->tpl_vars['FIELD_MODEL']->value){
+$_smarty_tpl->tpl_vars['FIELD_MODEL']->_loop = true;
+ $_smarty_tpl->tpl_vars['FIELD_NAME']->value = $_smarty_tpl->tpl_vars['FIELD_MODEL']->key;
+?><?php if ($_smarty_tpl->tpl_vars['FIELD_NAME']->value=='pac_tipo_persona'){?><?php $_smarty_tpl->tpl_vars['FIELD_VALUE'] = new Smarty_variable($_smarty_tpl->tpl_vars['FIELD_MODEL']->value->get('fieldvalue'), null, 0);?><?php }?><?php } ?><?php } ?><?php  $_smarty_tpl->tpl_vars['FIELD_MODEL_LIST'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['FIELD_MODEL_LIST']->_loop = false;
  $_smarty_tpl->tpl_vars['BLOCK_LABEL_KEY'] = new Smarty_Variable;
  $_from = $_smarty_tpl->tpl_vars['RECORD_STRUCTURE']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
 foreach ($_from as $_smarty_tpl->tpl_vars['FIELD_MODEL_LIST']->key => $_smarty_tpl->tpl_vars['FIELD_MODEL_LIST']->value){
@@ -63,7 +77,7 @@ $_smarty_tpl->tpl_vars['FIELD_MODEL_LIST']->_loop = true;
 foreach ($_from as $_smarty_tpl->tpl_vars['FIELD_MODEL']->key => $_smarty_tpl->tpl_vars['FIELD_MODEL']->value){
 $_smarty_tpl->tpl_vars['FIELD_MODEL']->_loop = true;
  $_smarty_tpl->tpl_vars['FIELD_NAME']->value = $_smarty_tpl->tpl_vars['FIELD_MODEL']->key;
-?><?php if (!$_smarty_tpl->tpl_vars['FIELD_MODEL']->value->isViewableInDetailView()){?><?php continue 1?><?php }?><?php if ($_smarty_tpl->tpl_vars['FIELD_MODEL']->value->get('uitype')=="83"){?><?php  $_smarty_tpl->tpl_vars['tax'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['tax']->_loop = false;
+?><?php if (!$_smarty_tpl->tpl_vars['FIELD_MODEL']->value->isViewableInDetailView()){?><?php continue 1?><?php }?><?php if (($_smarty_tpl->tpl_vars['FIELD_VALUE']->value=='Natural'&&$_smarty_tpl->tpl_vars['FIELD_NAME']->value=='pac_razon_social')||($_smarty_tpl->tpl_vars['FIELD_VALUE']->value!='Natural'&&($_smarty_tpl->tpl_vars['FIELD_NAME']->value=='firstname'||$_smarty_tpl->tpl_vars['FIELD_NAME']->value=='lastname'))){?><?php continue 1?><?php }?><?php if ($_smarty_tpl->tpl_vars['FIELD_MODEL']->value->get('uitype')=="83"){?><?php  $_smarty_tpl->tpl_vars['tax'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['tax']->_loop = false;
  $_smarty_tpl->tpl_vars['count'] = new Smarty_Variable;
  $_from = $_smarty_tpl->tpl_vars['TAXCLASS_DETAILS']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
 foreach ($_from as $_smarty_tpl->tpl_vars['tax']->key => $_smarty_tpl->tpl_vars['tax']->value){

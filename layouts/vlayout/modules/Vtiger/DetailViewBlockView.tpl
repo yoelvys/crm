@@ -9,7 +9,15 @@
 *
  ********************************************************************************/
 -->*}
-{strip}
+{strip} 
+        {foreach key=BLOCK_LABEL_KEY item=FIELD_MODEL_LIST from=$RECORD_STRUCTURE}
+            {foreach item=FIELD_MODEL key=FIELD_NAME from=$FIELD_MODEL_LIST}
+                {if $FIELD_NAME eq 'pac_tipo_persona'}
+                    {assign var=FIELD_VALUE value=$FIELD_MODEL->get('fieldvalue')}
+                {/if}
+            {/foreach}    
+        {/foreach}
+        
 	{foreach key=BLOCK_LABEL_KEY item=FIELD_MODEL_LIST from=$RECORD_STRUCTURE}
 	{assign var=BLOCK value=$BLOCK_LIST[$BLOCK_LABEL_KEY]}
 	{if $BLOCK eq null or $FIELD_MODEL_LIST|@count lte 0}{continue}{/if}
@@ -33,6 +41,9 @@
 			{if !$FIELD_MODEL->isViewableInDetailView()}
 				 {continue}
 			 {/if}
+                         {if ($FIELD_VALUE eq 'Natural' && $FIELD_NAME eq 'pac_razon_social') || ($FIELD_VALUE neq 'Natural' && ($FIELD_NAME eq 'firstname' || $FIELD_NAME eq 'lastname'))}
+                            {continue}
+                         {/if}    
 			 {if $FIELD_MODEL->get('uitype') eq "83"}
 				{foreach item=tax key=count from=$TAXCLASS_DETAILS}
 				{if $tax.check_value eq 1}

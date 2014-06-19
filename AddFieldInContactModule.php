@@ -38,7 +38,7 @@ $field3->name = 'pac_codigo';
 $field3->table = 'vtiger_contactdetails';
 $field3->column = 'pac_codido';
 $field3->columntype = 'VARCHAR(20)';
-$field3->uitype = 2;
+$field3->uitype = 1003;
 $field3->presence = 0;
 $field3->typeofdata = 'V~M';
 $block->addField($field3);
