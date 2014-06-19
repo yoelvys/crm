@@ -104,12 +104,7 @@ Class PAC_Client_Model {
                     . "obsercte01,acceder,idemp01,codprov01,desppar01,coniva01,cv2cte01,ctacgcte01,razcte01,repleg01,ruc01,timenegocio,dircliente01,"
                     . "telcte01c,refbanc01,refcom01,tarjcred01,pagare01,valorpagare01,garante01,fecvenp01,estsop01,notick01) "
                     . "VALUES ('" . $code . "',"
-                    . "'" . $name . "',"
-                    . "'" . $address . "',"
-                    . "'" . $homePhone . "',"
-                    . "'" . $cedulaRuc . "',"
-                    . "'" . $email . "',"
-                    . "'" . $alternativeEmail . "',"
+                    . "'" . $name . "','" . $address . "','" . $homePhone . "','" . $cedulaRuc . "','" . $email . "','" . $alternativeEmail . "',"
                     . "'" . $webSite . "',"
                     . "'" . $location . "',"
                     . "'" . $counter . "',"
@@ -150,7 +145,12 @@ Class PAC_Client_Model {
                     . "'" . $holderStatus . "',"
                     . "'" . $ticketNumber . "') ;";
         } else {
-            $sql = "UPDATE maecte SET nomcte01 = '" . $name . "', dircte01 = '" . $address . "', telcte01 =  '" . $homePhone . "', cascte01 = '" . $cedulaRuc . "', emailcte01 = '" . $email . "' WHERE codcte01 = '" . $code . "';";
+            $sql = "UPDATE maecte SET nomcte01 = '" . $name . "', "
+                    . "dircte01 = '" . $address . "', "
+                    . "telcte01 =  '" . $homePhone . "', "
+                    . "cascte01 = '" . $cedulaRuc . "', "
+                    . "emailcte01 = '" . $email . "' "
+                    . "WHERE codcte01 = '" . $code . "';";
         }
         $bd->execute($sql);
     }
