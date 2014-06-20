@@ -226,10 +226,10 @@ jQuery.Class("Vtiger_Popup_Js",{
 	},
 
 	retrieveSelectedRecords : function(cb, eventName) {
+            
 		if(typeof eventName == 'undefined') {
 			eventName = 'postSelection';
 		}
-
 		jQuery.windowMsg(eventName, function(data) {
 			cb(data);
 		});

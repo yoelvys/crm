@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.7, created on 2014-06-18 21:14:34
+<?php /* Smarty version Smarty-3.1.7, created on 2014-06-20 20:54:05
          compiled from "/var/www/crm/includes/runtime/../../layouts/vlayout/modules/Vtiger/PopupContentsCustom.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:18595583353a2013a1d7aa8-54938443%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '7ba9184a7aa2df02fe5a18df06ec0b21a8e2a8c3' => 
     array (
       0 => '/var/www/crm/includes/runtime/../../layouts/vlayout/modules/Vtiger/PopupContentsCustom.tpl',
-      1 => 1403124778,
+      1 => 1403297491,
       2 => 'file',
     ),
   ),
@@ -15,6 +15,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.7',
+  'unifunc' => 'content_53a2013a20f2e',
   'variables' => 
   array (
     'ORDER_BY' => 0,
@@ -22,12 +24,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'SOURCE_MODULE' => 0,
     'CURRENT_USER_MODEL' => 0,
     'LISTVIEW_ENTRIES' => 0,
-    'LISTVIEW_ENTRY' => 0,
     'KEY' => 0,
+    'LISTVIEW_ENTRY' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.7',
-  'unifunc' => 'content_53a2013a20f2e',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_53a2013a20f2e')) {function content_53a2013a20f2e($_smarty_tpl) {?><div class="popupEntriesDiv"><input type="hidden" value="<?php echo $_smarty_tpl->tpl_vars['ORDER_BY']->value;?>
 " id="orderBy"><input type="hidden" value="<?php echo $_smarty_tpl->tpl_vars['SORT_ORDER']->value;?>
@@ -37,7 +37,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 foreach ($_from as $_smarty_tpl->tpl_vars['LISTVIEW_ENTRY']->key => $_smarty_tpl->tpl_vars['LISTVIEW_ENTRY']->value){
 $_smarty_tpl->tpl_vars['LISTVIEW_ENTRY']->_loop = true;
  $_smarty_tpl->tpl_vars['KEY']->value = $_smarty_tpl->tpl_vars['LISTVIEW_ENTRY']->key;
-?><tr class="listViewEntries" data-id="<?php echo $_smarty_tpl->tpl_vars['LISTVIEW_ENTRY']->value;?>
+?><tr class="listViewEntries" data-id="<?php echo $_smarty_tpl->tpl_vars['KEY']->value;?>
 " data-name='<?php echo $_smarty_tpl->tpl_vars['LISTVIEW_ENTRY']->value;?>
 ' data-code="<?php echo $_smarty_tpl->tpl_vars['KEY']->value;?>
 "><td><?php echo $_smarty_tpl->tpl_vars['KEY']->value;?>

@@ -14,7 +14,7 @@
                     </tr>
             </thead>
             {foreach key=KEY item=LISTVIEW_ENTRY from=$LISTVIEW_ENTRIES name=popupListView}
-                <tr class="listViewEntries" data-id="{$LISTVIEW_ENTRY}" data-name='{$LISTVIEW_ENTRY}' data-code="{$KEY}">
+                <tr class="listViewEntries" data-id="{$KEY}" data-name='{$LISTVIEW_ENTRY}' data-code="{$KEY}">
                     <td>
                         {$KEY}
                     </td>
