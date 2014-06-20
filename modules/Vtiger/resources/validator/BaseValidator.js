@@ -185,5 +185,195 @@ jQuery.Class("Vtiger_Base_Validator_Js",{
     getFieldValue: function(){
         var field = this.getElement();
         return jQuery.trim(field.val());
+    },
+    
+    validateCedule: function (fieldValue){   
+        if (!this.validateProvinceCode(fieldValue)) {
+             return false;
+         } else {      
+             if (!this.validateThirdDigit(fieldValue, 'cedule')) {
+                 return false;
+             } else {
+                 if (!this.algorithmModule10(fieldValue)) {
+                     return false;
+                 } else {
+                     return true;
+                 }
+             }
+         }
+     },
+     
+    validateNaturalPersonRUC: function(fieldValue) {
+        if (!this.validateProvinceCode(fieldValue)) {
+            return false;
+        } else {
+            if (!this.validateThirdDigit(fieldValue, 'naturalRUC')) {
+                return false;
+            } else {
+                if (!this.validatePropertyCode(fieldValue.substring(10, 13))) {
+                    return false;
+                } else {     
+                    if (!this.algorithmModule10(fieldValue)){
+                        return false;
+                    } else {
+                        return true;
+                    }             
+                }
+            }
+        }
+    },
+
+    validateSocietyPrivateRUC: function(fieldValue) {  
+        if (!this.validateProvinceCode(fieldValue)) {
+            return false;
+        } else {
+            if (!this.validateThirdDigit(fieldValue, 'privateRUC')) {
+                return false;
+            } else {
+                if (!this.validatePropertyCode(fieldValue.substring(10, 13))) {
+                    return false;
+                } else {
+                    if (!this.algorithmModule11(fieldValue.substring(0, 9), fieldValue.substring(9, 10),'privateRUC')){
+                        return false;
+                    } else {
+                        return true;
+                    }             
+                }
+            }
+        }
+    },
+
+    validateSocietyPublishesRUC: function(fieldValue) { 
+        if (!this.validateProvinceCode(fieldValue)) {
+            return false;
+        } else {          
+            if (!this.validateThirdDigit(fieldValue, 'publicRUC')) {
+                return false;
+            } else {
+                if (!this.validatePropertyCode(fieldValue.substring(9, 13))) {
+                    return false;
+                } else {
+                    if (!this.algorithmModule11(fieldValue.substring(0, 8), fieldValue.substring(8, 9),'publicRUC')){
+                        return false;
+                    } else {
+                        return true;
+                    }             
+                }
+            }
+        }
+    },
+
+    validateProvinceCode: function(fieldValue) {
+        var provinceCode = fieldValue.substring(0, 1);
+            if (provinceCode < 0 || provinceCode > 24) {
+                return false;
+        }
+        return true;
+    },
+
+    validateThirdDigit: function(fieldValue, type) {
+        var provinceCode = fieldValue.substring(2, 3);   
+        switch(type) {
+            case 'cedule':
+
+            case 'naturalRUC':
+                if (provinceCode < 0 || provinceCode > 5) {
+                    return false;
+                }
+                break;
+            case 'privateRUC':
+                if (provinceCode != 9) {
+                    return false;
+                }
+                break; 
+            case 'publicRUC':
+                if (provinceCode != 6) {
+                    return false;
+                }
+                break;
+            default:
+                return false;
+                break;
+        }
+        return true;
+    },
+
+    validatePropertyCode: function(number) {
+        number = parseInt(number);
+        if (number < 1) {
+            return false;
+        }
+        return true;  
+    },
+
+    algorithmModule10: function(fieldValue) {       
+        var startDigit = fieldValue.substring(0, 9);
+        var verificationDigit = fieldValue.substring(9, 10);
+        var arrayCoefficients = [2, 1, 2, 1, 2, 1, 2, 1, 2];
+        verificationDigit = parseInt(verificationDigit);
+        var total = 0;
+        var positionValue;
+        var residue;
+        var result;
+        var sumPositionValue = 0;            
+
+        for(var i=0; i < startDigit.length; i++) {
+            startDigit.charAt(i);         
+            positionValue = (startDigit[i] * arrayCoefficients[i]);         
+            if (positionValue >= 10) {
+                sumPositionValue = (Math.floor(positionValue / 10) + (positionValue % 10)); 
+                total = total + sumPositionValue;
+            } else {
+                total = total + positionValue;
+            } 
+        }
+
+        residue = total % 10;
+        if (residue == 0) {
+            result = 0;
+        } else {
+            result = 10 - residue;
+        }   
+        
+        if (result != verificationDigit) {
+            return false;
+        }
+        return true;
+    },
+
+    algorithmModule11: function(startDigit, verificationDigit, type) {      
+        var arrayCoefficients;
+        switch (type) {
+            case 'privateRUC':
+                arrayCoefficients = [4, 3, 2, 7, 6, 5, 4, 3, 2];
+                break;
+            case 'publicRUC':
+                arrayCoefficients = [3, 2, 7, 6, 5, 4, 3, 2];
+                break;
+            default:
+                return false;
+                break;
+        }
+        var positionValue = 0;
+        var residue = 0;
+        var result;
+        var total = 0;           
+        for(var i = 0; i < startDigit.length; i++) {
+            startDigit.charAt(i);         
+            positionValue = (startDigit[i] * arrayCoefficients[i]);              
+            total = total + positionValue;
+        }
+        residue = total % 11;
+        if (residue == 0) {
+            result = 0;
+        } else {
+            result = 11 - residue;
+        }
+        if (result != verificationDigit) {
+            return false;
+        }
+
+        return true;
     }
+    
 });
