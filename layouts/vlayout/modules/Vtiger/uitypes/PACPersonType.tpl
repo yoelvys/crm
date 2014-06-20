@@ -14,6 +14,7 @@
     </option>
 </select>
 {else}
+    <input value="{$FIELD_MODEL->get('fieldvalue')}" type="hidden" class="fieldname" name="{$FIELD_MODEL->getFieldName()}"/>
     <span name ="pac_tipo_persona">{$FIELD_VALUE}</span>
 {/if}
 {/strip}

@@ -50,7 +50,7 @@ Class PAC_Client_Model {
         $responsibleOffice = $request->get('pac_oficina_encargada');
         $vendor = $request->get('pac_vendedor');
         $billCollector = $request->get('pac_cobrador');
-        $coordinator = $request->get('pac_cordinador');
+        $coordinator = $request->get('pac_coordinador');
         
         $price = $request->get('pac_precios');
         $paymentCondition = $request->get('pac_cond_pago');
@@ -155,9 +155,60 @@ Class PAC_Client_Model {
                     . "dircte01 = '" . $address . "', "
                     . "telcte01 =  '" . $homePhone . "', "
                     . "cascte01 = '" . $cedulaRuc . "', "
-                    . "emailcte01 = '" . $email . "' "
+                    . "emailcte01 = '" . $email . "', "
+                    . "emailaltcte01 = '" . $alternativeEmail . "', "
+                    . "website = '" . $webSite . "', "
+                    . "loccte01 = '" . $location . "', "
+                    . "pagleg01 = '" . $counter . "', "
+                    . "ofienccte01 = '" . $responsibleOffice . "', "
+                    . "vendcte01 = '" . $vendor . "', "
+                    . "cobrcte01 = '" . $billCollector . "', "
+                    . "cordcte01 = '" . $coordinator . "', "
+                    . "precte01 = " . $price . ", "
+                    . "condpag01 = '" . $paymentCondition . "', "
+                    . "limcred01 = " . $creditLimit . ", "
+                    . "cuotasven01 = " . $expiredQuota . ", "
+                    . "diasven01 = " . $expiredDay . ", "
+                    . "limcant01 = " . $limitedAmount. ", "
+                    . "desctocte01 = " . $discount . ", "
+                    . "promocte01 = '" . $promotions . "', "
+                    . "cheqpro01 = " . $protestedChecks . ", "
+                    . "obsercte01 = '" . $observations . "', "
+                    . "acceder = '" . $allowAccess . "', "
+                    . "idemp01 = " . $company . ", "
+                    . "codprov01 = '" . $supplierCode . "', "
+                    . "desppar01 = '" . $partialClearance . "', "
+                    . "coniva01 = '" . $withIVA . "', "
+                    . "cv2cte01 = '" . $printBarcode . "', "
+                    . "ctacgcte01 = '" . $accountCountable . "', "
+                    . "razcte01 = '" . $companyName . "', "
+                    . "repleg01 = '" . $legalRepresentative . "', "
+                    . "ruc01 = '" . $rucRepresentative . "', "
+                    . "timenegocio01 = '" . $businessTime . "', "
+                    . "dircliente01 = '" . $addressRepresentative . "', "
+                    . "telcte01c = '" . $phoneRepresentative . "', "
+                    . "refbanc01 = '" . $bankReferences . "', "
+                    . "refcom01 = '" . $tradeReferences . "', "
+                    . "tarjcred01 = '" . $creditCards . "', "
+                    . "pagare01 = '" . $promissoryNote . "', "
+                    . "valorpagare01 = " . $promissoryNoteValue . ", "
+                    . "garante01 = '" . $guarantor . "', "
+                    . "fecvenp01 = '" . $expirationDate . "', "
+                    . "estsop01 = '" . $holderStatus . "', "
+                    . "notick01 = '" . $ticketNumber . "', "
+                    . "tipcte01 = '" . $clientType . "', "
+                    . "fechanace01 = '" . $birthday  . "', "
+                    . "sexo01 = " . $sex . ", "
+                    . "estadocivil01 = '" . $civilStatus . "', "
+                    . "numhijos01 = " . $children . ", "
+                    . "dirgestion01 = '" . $addressGestion . "', "
+                    . "fecing01 = '" . $dateAdmission ."', "
+                    . "telcte01b = '" . $officePhone . "', "
+                    . "celular01 = '" . $mobile . "', "
+                    . "catcte01 = '" . $category. "' "
                     . "WHERE codcte01 = '" . $code . "';";
         }
+  
         $bd->execute($sql); 
     }
 
@@ -181,7 +232,7 @@ Class PAC_Client_Model {
     }
 
     public function getPACComboElementName($code, $tableNumber) {
-        $sql = "SELECT nomtab FROM `maetab` WHERE numtab='" . $tableNumber . "' and codtab='" . $code . "';";
+        $sql = "SELECT nomtab FROM `maetab` WHERE numtab='" . $tableNumber . "' and codtab<>'' and codtab='" . $code . "';";
 
         return $this->getPACComboElement($sql);
     }
@@ -261,7 +312,7 @@ Class PAC_Client_Model {
     private function getPACComboElement($sql) {
         $bd = ConnectionPAC::getInstance();
         $bd->execute($sql);
-        $elementName = "No encontrado";
+        $elementName = "";
         while ($row = $bd->fetchArray()) {
             $elementName = $row[0];
         }

@@ -18,7 +18,6 @@ class Vtiger_PACCivilStatus_UIType extends Vtiger_Base_UIType {
      */
     public function getDisplayValue($code) {
         $client = PAC_Client_Model::getInstance();
-        
         return $client->getPACComboElementName($code, "26");
     }
 

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.7, created on 2014-06-20 14:18:59
+<?php /* Smarty version Smarty-3.1.7, created on 2014-06-20 14:23:01
          compiled from "/var/www/crm/includes/runtime/../../layouts/vlayout/modules/Vtiger/uitypes/PACRUCRepresentative.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:107559881853a44270d7eea0-86763552%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '8fa99fcda0e13ce7a956a90a40fb67cd53947910' => 
     array (
       0 => '/var/www/crm/includes/runtime/../../layouts/vlayout/modules/Vtiger/uitypes/PACRUCRepresentative.tpl',
-      1 => 1403273934,
+      1 => 1403273952,
       2 => 'file',
     ),
   ),
@@ -33,6 +33,6 @@ _editView_fieldName_<?php echo $_smarty_tpl->tpl_vars['FIELD_MODEL']->value->get
 "value="<?php echo $_smarty_tpl->tpl_vars['FIELD_MODEL']->value->get('fieldvalue');?>
 "  data-fieldinfo='<?php echo $_smarty_tpl->tpl_vars['FIELD_INFO']->value;?>
 ' <?php if (!empty($_smarty_tpl->tpl_vars['SPECIAL_VALIDATOR']->value)){?>data-validator=<?php echo Zend_Json::encode($_smarty_tpl->tpl_vars['SPECIAL_VALIDATOR']->value);?>
-<?php }?> /><h1>asas</h1>
+<?php }?> />
 
 <?php }} ?>
