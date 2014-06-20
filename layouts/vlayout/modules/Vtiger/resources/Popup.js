@@ -255,7 +255,7 @@ jQuery.Class("Vtiger_Popup_Js",{
 		jQuery.triggerParentEvent(eventToTrigger, JSON.stringify(result));
 	},
 
-	getView : function(){
+	getView : function() {
 	    var view = jQuery('#view').val();
 	    if(view == '') {
 		    view = 'PopupAjax';
@@ -275,14 +275,14 @@ jQuery.Class("Vtiger_Popup_Js",{
 	},
 
 	isMultiSelectMode : function() {
-		if(this.multiSelect == false){
-			this.multiSelect = jQuery('#multi_select');
-		}
-		var value = this.multiSelect.val();
-		if(value) {
-			return value;
-		}
-		return false;
+            if(this.multiSelect == false){
+                this.multiSelect = jQuery('#multi_select');
+            }
+            var value = this.multiSelect.val();
+            if(value) {
+                    return value;
+            }
+            return false;
 	},
 
 	getListViewEntries: function(e){
@@ -290,7 +290,7 @@ jQuery.Class("Vtiger_Popup_Js",{
 		var row  = jQuery(e.currentTarget);
 		var dataUrl = row.data('url');
 		if(typeof dataUrl != 'undefined'){
-			dataUrl = dataUrl+'&currency_id='+jQuery('#currencyId').val();
+			dataUrl = dataUrl + '&currency_id=' + jQuery('#currencyId').val();
 		    AppConnector.request(dataUrl).then(
 			function(data){
 				for(var id in data){
@@ -302,7 +302,6 @@ jQuery.Class("Vtiger_Popup_Js",{
 				e.preventDefault();
 			},
 			function(error,err){
-
 			}
 		    );
 		} else {
