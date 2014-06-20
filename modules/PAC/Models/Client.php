@@ -217,14 +217,130 @@ Class PAC_Client_Model {
 
     public function updateAjax($clientJSONData) {
         $bd = ConnectionPAC::getInstance();
-        $code = $clientJSONData['code']['value'];
-        $name = $clientJSONData['firstname']['value'];
-        $address = $clientJSONData['mailingstreet']['value'] . "." . $clientJSONData['mailingcity']['value'];
-        $cedulaRuc = $clientJSONData['cedule']['value'];
-        $homePhone = $clientJSONData['homephone']['value'];
-        $email = $clientJSONData['homephone']['email'];
+        $name = $request->get('pac_tipo_persona')== "Natural" ? $request->get('firstname') . " " . $request->get('lastname') : $request->get('pac_razon_social');
+        $cedulaRuc = $request->get('pac_cedula');
+        $code = $request->get('pac_codigo');
+        $category = $request->get('pac_categoria');
+        $clientType = $request->get('pac_tipo_cliente');
+        $birthdayAux = DateTime::createFromFormat('m-d-Y', $request->get('birthday'));
+        $birthday = $birthdayAux->format('Y-m-d');
+        $sex = ($request->get('pac_sexo') == 'M' ? 1 :($request->get('pac_sexo') == 'F' ? 0: 'null') );
+        $civilStatus = $request->get('pac_estado_civil');
+        $children = $request->get('pac_numero_hijos') == '' ? 0 : $request->get('pac_numero_hijos');
+        $address = $request->get('mailingstreet');
+        $addressGestion = $request->get('pac_direccion_gestion');
+        $dateAdmissionAux = DateTime::createFromFormat('m-d-Y', $request->get('pac_fecha_ingreso'));
+        $dateAdmission = $dateAdmissionAux->format('Y-m-d');
+        $officePhone = $request->get('homephone');
+        $homePhone = $request->get('otherphone');
+        $mobile = $request->get('mobile');
+        $email = $request->get('email');
+        $alternativeEmail = $request->get('secondaryemail');
+        $webSite = $request->get('pac_sitio_web');
 
-        $sql = "UPDATE maecte SET nomcte01 = '" . $name . "', dircte01 = '" . $address . "', telcte01 =  '" . $homePhone . "', cascte01 = '" . $cedulaRuc . "', emailcte01 = '" . $email . "' WHERE codcte01 = '" . $code . "';";
+        $location = $request->get('pac_localidad');
+        $counter = $request->get('pac_pagador_contador');
+
+        $responsibleOffice = $request->get('pac_oficina_encargada');
+        $vendor = $request->get('pac_vendedor');
+        $billCollector = $request->get('pac_cobrador');
+        $coordinator = $request->get('pac_coordinador');
+        
+        $price = $request->get('pac_precios');
+        $paymentCondition = $request->get('pac_cond_pago');
+        $creditLimit = $request->get('pac_limite_credito') == '' ? 0 : $request->get('pac_limite_credito');
+        $expiredQuota = $request->get('pac_cuotas_vencida') == '' ? 0 : $request->get('pac_cuotas_vencida');
+        $expiredDay = $request->get('pac_dias_vencidos')== '' ? 0 : $request->get('pac_dias_vencidos');
+        $limitedAmount = $request->get('pac_limite_cantidad')== '' ? 0 : $request->get('pac_limite_cantidad');
+        $discount = $request->get('pac_descuento') == '' ? 0 : $request->get('pac_descuento');
+        $promotions = $request->get('pac_promociones');
+        $protestedChecks = $request->get('pac_cheques_protestados') == '' ? 0 : $request->get('pac_cheques_protestados');
+        $observations = $request->get('pac_observaciones');
+        $allowAccess = $request->get('pac_permitir_acceso') == 'on' ? 'S' : 'N';
+        $company = $request->get('pac_empresa') == '' ? 0 : $request->get('pac_empresa');
+        $supplierCode = $request->get('pac_cod_provedor');
+        $partialClearance = $request->get('pac_despacho_parcial') == 'on' ? 'S' : 'N';
+        $withIVA = $request->get('pac_con_iva') == 'on' ? 'S' : 'N';
+        $printBarcode = $request->get('pac_imprimir_barcod') == 'on' ? 'S' : 'N';
+        $accountCountable = $request->get('pac_cuenta_contable');
+        $companyName = $request->get('pac_razon_social');
+        
+        $legalRepresentative = $request->get('pac_representante');
+        $rucRepresentative = $request->get('pac_ruc_representante');
+        $businessTime = $request->get('pac_tiempo_negocio');
+        $addressRepresentative = $request->get('pac_direccion_representante');
+        $phoneRepresentative = $request->get('pac_telefono_representante');
+        
+        $bankReferences = $request->get('pac_referencias_bancarias');
+        $tradeReferences = $request->get('pac_referencias_comerciales');
+        $creditCards = $request->get('pac_tarjetas_credito');
+       
+        
+        $promissoryNote = $request->get('pac_pagare')== 'on' ? 'S' : 'N';
+        $promissoryNoteValue = $request->get('pac_valor_pagare') == '' ? 0 : $request->get('pac_valor_pagare');
+        $guarantor = $request->get('pac_garante') == 'on' ? 'S' : 'N';
+        $expirationDateAux = DateTime::createFromFormat('m-d-Y', $request->get('pac_fecha_vencimiento'));
+        $expirationDate = $expirationDateAux->format('Y-m-d');
+        
+        $holderStatus = $clientJSONData['pac_estado_soporte']['value'];    
+        $ticketNumber = $clientJSONData['pac_numero_ticket']['value'];
+
+        $sql = "UPDATE maecte SET nomcte01 = '" . $name . "', "
+                    . "dircte01 = '" . $address . "', "
+                    . "telcte01 =  '" . $homePhone . "', "
+                    . "cascte01 = '" . $cedulaRuc . "', "
+                    . "emailcte01 = '" . $email . "', "
+                    . "emailaltcte01 = '" . $alternativeEmail . "', "
+                    . "website = '" . $webSite . "', "
+                    . "loccte01 = '" . $location . "', "
+                    . "pagleg01 = '" . $counter . "', "
+                    . "ofienccte01 = '" . $responsibleOffice . "', "
+                    . "vendcte01 = '" . $vendor . "', "
+                    . "cobrcte01 = '" . $billCollector . "', "
+                    . "cordcte01 = '" . $coordinator . "', "
+                    . "precte01 = " . $price . ", "
+                    . "condpag01 = '" . $paymentCondition . "', "
+                    . "limcred01 = " . $creditLimit . ", "
+                    . "cuotasven01 = " . $expiredQuota . ", "
+                    . "diasven01 = " . $expiredDay . ", "
+                    . "limcant01 = " . $limitedAmount. ", "
+                    . "desctocte01 = " . $discount . ", "
+                    . "promocte01 = '" . $promotions . "', "
+                    . "cheqpro01 = " . $protestedChecks . ", "
+                    . "obsercte01 = '" . $observations . "', "
+                    . "acceder = '" . $allowAccess . "', "
+                    . "idemp01 = " . $company . ", "
+                    . "codprov01 = '" . $supplierCode . "', "
+                    . "desppar01 = '" . $partialClearance . "', "
+                    . "coniva01 = '" . $withIVA . "', "
+                    . "cv2cte01 = '" . $printBarcode . "', "
+                    . "ctacgcte01 = '" . $accountCountable . "', "
+                    . "razcte01 = '" . $companyName . "', "
+                    . "repleg01 = '" . $legalRepresentative . "', "
+                    . "ruc01 = '" . $rucRepresentative . "', "
+                    . "timenegocio01 = '" . $businessTime . "', "
+                    . "dircliente01 = '" . $addressRepresentative . "', "
+                    . "telcte01c = '" . $phoneRepresentative . "', "
+                    . "refbanc01 = '" . $bankReferences . "', "
+                    . "refcom01 = '" . $tradeReferences . "', "
+                    . "tarjcred01 = '" . $creditCards . "', "
+                    . "pagare01 = '" . $promissoryNote . "', "
+                    . "valorpagare01 = " . $promissoryNoteValue . ", "
+                    . "garante01 = '" . $guarantor . "', "
+                    . "fecvenp01 = '" . $expirationDate . "', "
+                    . "estsop01 = '" . $holderStatus . "', "
+                    . "notick01 = '" . $ticketNumber . "', "
+                    . "tipcte01 = '" . $clientType . "', "
+                    . "fechanace01 = '" . $birthday  . "', "
+                    . "sexo01 = " . $sex . ", "
+                    . "estadocivil01 = '" . $civilStatus . "', "
+                    . "numhijos01 = " . $children . ", "
+                    . "dirgestion01 = '" . $addressGestion . "', "
+                    . "fecing01 = '" . $dateAdmission ."', "
+                    . "telcte01b = '" . $officePhone . "', "
+                    . "celular01 = '" . $mobile . "', "
+                    . "catcte01 = '" . $category. "' "
+                    . "WHERE codcte01 = '" . $code . "';";
         $bd->execute($sql);
     }
 
