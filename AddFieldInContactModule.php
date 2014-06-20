@@ -456,7 +456,7 @@ $field47->name = 'pac_ruc_representante';
 $field47->table = 'vtiger_contactdetails';
 $field47->column = 'pac_ruc_representante';
 $field47->columntype = 'VARCHAR(15)';
-$field47->uitype = 1;
+$field47->uitype = 1047;
 $field47->presence = 2;
 $field47->typeofdata = 'V~O';
 $blockBusinessInformation->addField($field47);

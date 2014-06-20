@@ -165,8 +165,7 @@ class Vtiger_Field_Model extends Vtiger_Field {
                 $fieldDataType = 'PACCeduleRUC';
             } else if ($uiType == '1003') {
                 $fieldDataType = 'PACCode';
-            } 
-            else if ($uiType == '1004') {
+            } else if ($uiType == '1004') {
                 $fieldDataType = 'PACCategory';
             } else if ($uiType == '1005') {
                 $fieldDataType = 'PACClientType';
@@ -194,6 +193,8 @@ class Vtiger_Field_Model extends Vtiger_Field {
                 $fieldDataType = 'PACCompany';
             } else if ($uiType == '1043') {
                 $fieldDataType = 'PACAccountCountable';
+            } else if ($uiType == '1047') {
+                $fieldDataType = 'PACRUCRepresentative';
             } else if ($uiType == '1059') {
                 $fieldDataType = 'PACStateSupport';
             } else {
