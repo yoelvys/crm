@@ -947,6 +947,9 @@ class Vtiger_Field_Model extends Vtiger_Field {
             case 'pac_cedula' : $funcName = array('name' => 'PACCeduleRUC');
                 array_push($validator, $funcName);
                 break;
+            case 'pac_ruc_representante' : $funcName = array('name' => 'PACRUCRepresentative');
+                array_push($validator, $funcName);
+                break;
         }
         return $validator;
     }

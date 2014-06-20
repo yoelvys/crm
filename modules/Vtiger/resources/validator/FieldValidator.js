@@ -8,269 +8,121 @@
  *************************************************************************************/
 Vtiger_Base_Validator_Js("Vtiger_PACCeduleRUC_Validator_Js", {
     
-       // Vtiger_Base_Validator_Js("Vtiger_PACCeduleruc_Validator_Js", {
+    invokeValidation: function(field, rules, i, options){
+        var cedularucInstance = new Vtiger_PACCeduleRUC_Validator_Js();
+            cedularucInstance.setElement(field);
 
-        /**
-         *Function which invokes field validation
-         *@param accepts field element as parameter
-         * @return error if validation fails true on success
-         */
-        invokeValidation: function(field, rules, i, options){
-            var cedularucInstance = new Vtiger_PACCeduleRUC_Validator_Js();
-                    cedularucInstance.setElement(field);
-                    var response = cedularucInstance.validate();
-                    if (response != true){
-            return cedularucInstance.getError();
+            var response = cedularucInstance.validate();
+            if (response != true){
+                return cedularucInstance.getError();
             }
-            }
-        }, {
+    }
+}, {
 
-        validate: function(){
-           
-                var fieldValue = this.getFieldValue();
-                return this.validateValue(fieldValue);
-        },
+    validate: function(){
+            var fieldValue = this.getFieldValue();
+            return this.validateValue(fieldValue);
+    },
 
-        validateValue : function(fieldValue){ 
-            if (!fieldValue){
-                var errorInfo = app.vtranslate('El campo no puede estar vacio');
-                this.setError(errorInfo);
-                return false;
+    validateValue : function(fieldValue){  
+        if (!fieldValue){
+            var errorInfo = app.vtranslate('El campo no puede estar vacio');
+            this.setError(errorInfo);
+            return false;
+        } else {
+            if ($('input[name="pac_validate_cedule_ruc"]:checked').val() == "on") {
+                return true;
             } else {
-                if ($('input[name="pac_validate_cedule_ruc"]:checked').val() == "on") {
-                    return true;
+                if (isNaN(fieldValue)) { 
+                    var errorInfo = app.vtranslate('Solo números');
+                    this.setError(errorInfo);
+                    return false;
                 } else {
-                    if (isNaN(fieldValue)) { 
-                        var errorInfo = app.vtranslate('Solo números');
-                        this.setError(errorInfo);
-                        return false;
+                    if(fieldValue.length == 10){
+                        if(this.validateCedule(fieldValue)) {
+                            return true;
+                        } else {
+                            var errorInfo = app.vtranslate('Cédula no válida');
+                            this.setError(errorInfo);
+                            return false;
+                        }    
                     } else {
-                        if(fieldValue.length == 10){
-                            if(this.validarCedula(fieldValue)) {
+                        if (fieldValue.length == 13){
+                            console.log(this.validateNaturalPersonRUC(fieldValue));
+                            if(this.validateNaturalPersonRUC(fieldValue)) {
                                 return true;
                             } else {
-                                var errorInfo = app.vtranslate('Cédula no válida');
-                                this.setError(errorInfo);
-                                return false;
-                            }    
-                        } else {
-                            if (fieldValue.length == 13){
-                                if(this.validarRucPersonaNatural(fieldValue)) {
+                                if(this.validateSocietyPrivateRUC(fieldValue)) {
                                     return true;
                                 } else {
-                                    if(this.validarRucSociedadPrivada(fieldValue)) {
+                                    if(this.validateSocietyPublishesRUC(fieldValue)) {
                                         return true;
                                     } else {
-                                        if(this.validarRucSociedadPublica(fieldValue)) {
-                                            return true;
-                                        } else {
-                                            var errorInfo = app.vtranslate('RUC no válido');
-                                            this.setError(errorInfo);
-                                            return false;
-                                        }
+                                        var errorInfo = app.vtranslate('RUC no válido');
+                                        this.setError(errorInfo);
+                                        return false;
                                     }
                                 }
-                            } else {
-                                var errorInfo = app.vtranslate('La cantidad de dígitos no es correcta');
-                                this.setError(errorInfo);
-                                return false;
                             }
+                        } else {
+                            var errorInfo = app.vtranslate('La cantidad de dígitos no es correcta');
+                            this.setError(errorInfo);
+                            return false;
                         }
-                    } 
-                }
-            }  
-        },
-    
-    
-        validarCedula: function (fieldValue){   
-           if (!this.validarCodigoProvincia(fieldValue)) {
-                return false;
-            } else {      
-                if (!this.validarTercerDigito(fieldValue, 'cedula')) {
-                    return false;
-                } else {
-                    if (!this.algoritmoModulo10(fieldValue)) {
-                        return false;
-                    } else {
-                        return true;
                     }
-                }
-            }
-        },
-    
-        validarRucPersonaNatural: function(fieldValue) {
-            if (!this.validarCodigoProvincia(fieldValue)) {
-                return false;
-            } else {
-                if (!this.validarTercerDigito(fieldValue, 'rucNatural')) {
-                    return false;
-                } else {
-                    if (!this.validarCodigoEstablecimiento(fieldValue.substring(10, 13))) {
-                        return false;
-                    } else {
-                        if (!this.algoritmoModulo10(fieldValue)){
-                            return false;
-                        } else {
-                            return true;
-                        }             
-                    }
-                }
-            }
-        },
-
-        validarRucSociedadPrivada: function(fieldValue) {  
-            if (!this.validarCodigoProvincia(fieldValue)) {
-                return false;
-            } else {
-                if (!this.validarTercerDigito(fieldValue, 'rucPrivada')) {
-                    return false;
-                } else {
-                    if (!this.validarCodigoEstablecimiento(fieldValue.substring(10, 13))) {
-                        return false;
-                    } else {
-                        if (!this.algoritmoModulo11(fieldValue.substring(0, 9), fieldValue.substring(9, 10),'rucPrivada')){
-                            return false;
-                        } else {
-                            return true;
-                        }             
-                    }
-                }
-            }
-        },
-
-        validarRucSociedadPublica: function(fieldValue) { 
-            if (!this.validarCodigoProvincia(fieldValue)) {
-                return false;
-            } else {          
-                if (!this.validarTercerDigito(fieldValue, 'rucPublica')) {
-                    return false;
-                } else {
-                    if (!this.validarCodigoEstablecimiento(fieldValue.substring(9, 13))) {
-                        return false;
-                    } else {
-                        if (!this.algoritmoModulo11(fieldValue.substring(0, 8), fieldValue.substring(8, 9),'rucPublica')){
-                            return false;
-                        } else {
-                            return true;
-                        }             
-                    }
-                }
-            }
-        },
-
-        validarCodigoProvincia: function(fieldValue) {
-            var codProv = fieldValue.substring(0, 1);
-                if (codProv < 0 || codProv > 24) {
-                    return false;
-            }
-            return true;
-        },
-
-        validarTercerDigito: function(fieldValue, type) {
-            var codProv = fieldValue.substring(2, 3);   
-            switch(type) {
-                case 'cedula':
-
-                case 'rucNatural':
-                    if (codProv < 0 || codProv > 5) {
-                        return false;
-                    }
-                    break;
-                case 'rucPrivada':
-                    if (codProv != 9) {
-                        return false;
-                    }
-                    break; 
-                case 'rucPublica':
-                    if (codProv != 6) {
-                        return false;
-                    }
-                    break;
-                default:
-                    return false;
-                    break;
-            }
-            return true;
-        },
-
-        validarCodigoEstablecimiento: function(numero) {
-            numero = parseInt(numero);
-            if (numero < 1) {
-                return false;
-            }
-            return true;  
-        },
-
-        algoritmoModulo10: function(fieldValue) {       
-            var digIni = fieldValue.substring(0, 9);
-            var digVerif = fieldValue.substring(9, 10);
-            var arrayCoeficientes = [2, 1, 2, 1, 2, 1, 2, 1, 2];
-            digVerif = parseInt(digVerif);
-            var total = 0;
-            var valorPosicion;
-            var residuo;
-            var resultado;
-            var sumValorPosicion = 0;            
-           
-            for(var i=0; i<digIni.length; i++) {
-                digIni.charAt(i);         
-                valorPosicion = (digIni[i] * arrayCoeficientes[i]);         
-                if (valorPosicion >= 10) {
-                    sumValorPosicion = (Math.floor(valorPosicion/10) + (valorPosicion % 10)); 
-                    total = total + sumValorPosicion;
-                } else {
-                    total = total + valorPosicion;
                 } 
             }
+        }  
+    }  
+});
 
-            residuo = total % 10;
-            if (residuo == 0) {
-                resultado = 0;
-            } else {
-                resultado = 10 - residuo;
-            }   
-            
-            if (resultado != digVerif) {
-                return false;
-            }
-            return true;
-        },
-
-        algoritmoModulo11: function(digIni, digVerif, type) {      
-            var arrayCoeficientes;
-            switch (type) {
-                case 'rucPrivada':
-                    arrayCoeficientes = [4, 3, 2, 7, 6, 5, 4, 3, 2];
-                    break;
-                case 'rucPublica':
-                    arrayCoeficientes = [3, 2, 7, 6, 5, 4, 3, 2];
-                    break;
-                default:
-                    return false;
-                    break;
-            }
-            var valorPosicion = 0;
-            var residuo = 0;
-            var resultado;
-            var total = 0;           
-            for(var i = 0; i < digIni.length; i++) {
-                digIni.charAt(i);         
-                valorPosicion = (digIni[i] * arrayCoeficientes[i]);              
-                total = total + valorPosicion;
-            }
-            residuo = total % 11;
-            if (residuo == 0) {
-                resultado = 0;
-            } else {
-                resultado = 11 - residuo;
-            }
-            if (resultado != digVerif) {
-                return false;
-            }
-            
-            return true;
+Vtiger_Base_Validator_Js("Vtiger_PACRUCRepresentative_Validator_Js", {
+    
+    invokeValidation: function(field, rules, i, options) {
+        var rucRepresentativeInstance = new Vtiger_PACRUCRepresentative_Validator_Js();
+            rucRepresentativeInstance.setElement(field);
+        var response = rucRepresentativeInstance.validate();
+        if (response != true) {
+            return rucRepresentativeInstance.getError();
         }
-        
+    }
+}, {
+
+    validate: function(){
+            var fieldValue = this.getFieldValue();
+            console.log(fieldValue);
+            return this.validateValue(fieldValue);
+    },
+
+    validateValue : function(fieldValue) { 
+        if (isNaN(fieldValue)) { 
+            var errorInfo = app.vtranslate('Solo números');
+            this.setError(errorInfo);
+            return false;
+        } else {
+            if (fieldValue.length == 13) {
+                if(this.validateNaturalPersonRUC(fieldValue)) {
+                    return true;
+                } else {
+                    if(this.validateSocietyPrivateRUC(fieldValue)) {
+                        return true;
+                    } else {
+                        if(this.validateSocietyPublishesRUC(fieldValue)) {
+                            return true;
+                        } else {
+                            var errorInfo = app.vtranslate('RUC no válido');
+                            this.setError(errorInfo);
+                            return false;
+                        }
+                    }
+                }
+            } else {
+                var errorInfo = app.vtranslate('La cantidad de dígitos no es correcta');
+                this.setError(errorInfo);
+                return false;
+            }
+        } 
+    }  
 });
 
 
@@ -290,6 +142,8 @@ Vtiger_Base_Validator_Js("Vtiger_Email_Validator_Js",{
 		if(response != true){
 			return emailInstance.getError();
 		}
+                
+               
 	}
 },{
 
