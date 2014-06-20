@@ -30,13 +30,15 @@ Class PAC_Client_Model {
         $code = $request->get('pac_codigo');
         $category = $request->get('pac_categoria');
         $clientType = $request->get('pac_tipo_cliente');
-        $birthday = $request->get('birthday');
+        $birthdayAux = DateTime::createFromFormat('m-d-Y', $request->get('birthday'));
+        $birthday = $birthdayAux->format('Y-m-d');
         $sex = ($request->get('pac_sexo') == 'M' ? 1 :($request->get('pac_sexo') == 'F' ? 0: 'null') );
         $civilStatus = $request->get('pac_estado_civil');
         $children = $request->get('pac_numero_hijos') == '' ? 0 : $request->get('pac_numero_hijos');
         $address = $request->get('mailingstreet');
         $addressGestion = $request->get('pac_direccion_gestion');
-        $dateAdmission = $request->get('pac_fecha_ingreso');
+        $dateAdmissionAux = DateTime::createFromFormat('m-d-Y', $request->get('pac_fecha_ingreso'));
+        $dateAdmission = $dateAdmissionAux->format('Y-m-d');
         $officePhone = $request->get('homephone');
         $homePhone = $request->get('otherphone');
         $mobile = $request->get('mobile');
@@ -50,7 +52,7 @@ Class PAC_Client_Model {
         $responsibleOffice = $request->get('pac_oficina_encargada');
         $vendor = $request->get('pac_vendedor');
         $billCollector = $request->get('pac_cobrador');
-        $coordinator = $request->get('pac_cordinador');
+        $coordinator = $request->get('pac_coordinador');
         
         $price = $request->get('pac_precios');
         $paymentCondition = $request->get('pac_cond_pago');
@@ -85,7 +87,8 @@ Class PAC_Client_Model {
         $promissoryNote = $request->get('pac_pagare')== 'on' ? 'S' : 'N';
         $promissoryNoteValue = $request->get('pac_valor_pagare') == '' ? 0 : $request->get('pac_valor_pagare');
         $guarantor = $request->get('pac_garante') == 'on' ? 'S' : 'N';
-        $expirationDate = $request->get('pac_fecha_vencimiento');
+        $expirationDateAux = DateTime::createFromFormat('m-d-Y', $request->get('pac_fecha_vencimiento'));
+        $expirationDate = $expirationDateAux->format('Y-m-d');
         
         $holderStatus = $request->get('pac_estado_soporte');    
         $ticketNumber = $request->get('pac_numero_ticket');
@@ -158,6 +161,7 @@ Class PAC_Client_Model {
                     . "emailcte01 = '" . $email . "' "
                     . "WHERE codcte01 = '" . $code . "';";
         }
+        
         $bd->execute($sql); 
     }
 
