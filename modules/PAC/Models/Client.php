@@ -278,7 +278,7 @@ Class PAC_Client_Model {
         
         $promissoryNote = $clientJSONData['pac_pagare']['value'] == 'on' ? 'S' : 'N';
         $promissoryNoteValue = $clientJSONData['pac_valor_pagare']['value'] == '' ? 0 : $clientJSONData['pac_valor_pagare']['value'];
-        $guarantor = $request->get('pac_garante') == 'on' ? 'S' : 'N';
+        $guarantor = $clientJSONData['pac_garante']['value'] == 'on' ? 'S' : 'N';
         $expirationDateAux = DateTime::createFromFormat('m-d-Y', $clientJSONData['pac_fecha_vencimiento']['value']);
         $expirationDate = $expirationDateAux->format('Y-m-d');
         
