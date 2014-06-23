@@ -175,9 +175,15 @@ Vtiger_Edit_Js("Contacts_Edit_Js", {}, {
             $.ajax({
                 type: 'post',
                 url: 'updateAccountCountable.php',
+                dataType: 'json',
                 data: {comboValue: self.val()},
                 success: function(data) {
-                    $('[name="pac_cuenta_contable"]').val(data);
+                    var sourceField = 'pac_cuenta_contable';
+                    var fieldElement = $('input[name="'+sourceField+'"]');
+                    var sourceFieldDisplay = sourceField+"_display";
+                    var fieldDisplayElement = $('input[name="'+sourceFieldDisplay+'"]');
+                    fieldElement.val(data.codeAccount);
+                    fieldDisplayElement.val(data.nameAccount).attr('readonly',true);
                 },
                 error: function(obj, nameAccount, c) {
                     console.log(nameAccount);

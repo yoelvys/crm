@@ -411,11 +411,11 @@ Class PAC_Client_Model {
         $sql = "SELECT cta1cate  FROM `categorias` WHERE `tipocate` = '03' AND codcatep IN (0, 1) AND codcatep NOT IN ('') AND codcate = '". $code ."';";   
         $accountCode = $this->getPACComboElement($sql);
         $sqlAccount = "SELECT nomcta FROM `maecon` WHERE `ctamaecon` = '". $accountCode ."' ;";
-        $result = $this->getPACComboElement($sqlAccount);
-        if ($result == 'No encontrado') {
-            return '';
-        } 
-        return $result;
+        $nameAccount = $this->getPACComboElement($sqlAccount);
+        if ($nameAccount == 'No encontrado') {
+            return $resultArray = array('0'=>'', '1'=>'');
+        }
+        return $resultArray = array('0'=>$accountCode, '1'=>$nameAccount);
     }
 
     private function getPACComboData($sql) {
