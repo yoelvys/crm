@@ -203,7 +203,6 @@ jQuery.Class("Vtiger_Edit_Js",{
 		var fieldElement = container.find('input[name="'+sourceField+'"]');
 		var sourceFieldDisplay = sourceField+"_display";
 		var fieldDisplayElement = container.find('input[name="'+sourceFieldDisplay+'"]');
-                console.log(fieldDisplayElement);
 		var popupReferenceModule = container.find('input[name="popupReferenceModule"]').val();
 		var selectedName = params.name;
 		var id = params.id;
