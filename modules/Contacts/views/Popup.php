@@ -60,7 +60,8 @@ class Contacts_Popup_View extends Vtiger_Popup_View {
 			}
 
 			$headers = $relationListView->getHeaders();
-			$models = $relationListView->getEntries($pagingModel);
+			
+                        $models = $relationListView->getEntries($pagingModel);
 			$noOfEntries = count($models);
 			foreach ($models as $recordId => $recordModel) {
 				foreach ($headers as $fieldName => $fieldModel) {

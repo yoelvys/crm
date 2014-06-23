@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.7, created on 2014-06-19 20:02:15
+<?php /* Smarty version Smarty-3.1.7, created on 2014-06-23 19:11:06
          compiled from "C:\xampp\htdocs\crm\includes\runtime/../../layouts/vlayout\modules\Vtiger\PopupSearchCustom.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2442553a05f124e8ef6-01337479%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '19ecabc9a39aba1f3d2a0cfd5bbf9e4333c850bd' => 
     array (
       0 => 'C:\\xampp\\htdocs\\crm\\includes\\runtime/../../layouts/vlayout\\modules\\Vtiger\\PopupSearchCustom.tpl',
-      1 => 1403126422,
+      1 => 1403550589,
       2 => 'file',
     ),
   ),
@@ -45,7 +45,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 " /><input type="hidden" id="currencyId" value="<?php echo $_smarty_tpl->tpl_vars['CURRENCY_ID']->value;?>
 " /><input type="hidden" id="relatedParentModule" value="<?php echo $_smarty_tpl->tpl_vars['RELATED_PARENT_MODULE']->value;?>
 "/><input type="hidden" id="relatedParentId" value="<?php echo $_smarty_tpl->tpl_vars['RELATED_PARENT_ID']->value;?>
-"/><input type="hidden" id="view" value="PopupAjax1"/><div class="popupContainer row-fluid"><div class="span12"><div class="row-fluid"><div class="span6 row-fluid"><span class="logo span5"><img src="<?php echo $_smarty_tpl->tpl_vars['COMPANY_LOGO']->value->get('imagepath');?>
+"/><input type="hidden" id="view" value="PopupCustomAjax"/><div class="popupContainer row-fluid"><div class="span12"><div class="row-fluid"><div class="span6 row-fluid"><span class="logo span5"><img src="<?php echo $_smarty_tpl->tpl_vars['COMPANY_LOGO']->value->get('imagepath');?>
 " title="<?php echo $_smarty_tpl->tpl_vars['COMPANY_LOGO']->value->get('title');?>
 " alt="<?php echo $_smarty_tpl->tpl_vars['COMPANY_LOGO']->value->get('alt');?>
 "/></span></div><div class="span6 pull-right"><?php if ($_smarty_tpl->tpl_vars['SOURCE_FIELD']->value=='pac_cuenta_contable'){?><span class="pull-right"><b>Cuentas contables</b></span><?php }?></div></div></div></div><form class="form-horizontal popupSearchContainer"><div class="control-group margin0px"><span class="paddingLeft10px"><strong><?php echo vtranslate('LBL_SEARCH_FOR');?>

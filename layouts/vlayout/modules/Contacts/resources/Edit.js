@@ -200,6 +200,13 @@ Vtiger_Edit_Js("Contacts_Edit_Js", {}, {
             jQuery('[name="pac_fecha_ingreso"]', form).val(twoDigitMonth + '-' + fullDate.getDate() + '-' + fullDate.getFullYear());
         }
     },
+    
+    checkValidate: function(form) {
+        $('input[name="pac_validate_cedule_ruc"]',form).click(function(){  
+            $('input[name="pac_cedula"]').val('');
+        });
+    },
+    
     selectPersonType: function(form) {
         var self = this;
         jQuery('[name="pac_tipo_persona"]', form).change(function() {
@@ -236,6 +243,7 @@ Vtiger_Edit_Js("Contacts_Edit_Js", {}, {
         this.registerRecordPreSaveEvent(container);
         this.updateAccountCountable(container);
         this.dateNow(container);
+        this.checkValidate(container);
         this.selectPersonType(container);
         this.showFieldByPersonType(container);
 

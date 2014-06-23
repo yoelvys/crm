@@ -35,6 +35,6 @@ class Contacts_PopupAjax_View extends Contacts_Popup_View {
 		$moduleName = $request->getModule();
 		$this->initializeListViewContents($request, $viewer);
 
-		echo $viewer->view('PopupContents.tpl', $moduleName, true);
+		echo $viewer->view('PopupContentsCustom.tpl', $moduleName, true);
 	}
 }

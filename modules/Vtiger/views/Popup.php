@@ -132,6 +132,7 @@ class Vtiger_Popup_View extends Vtiger_Footer_View {
 		if(!$this->listViewHeaders){
 			$this->listViewHeaders = $listViewModel->getListViewHeaders();
 		}
+                
 		if(!$this->listViewEntries){
                     
 			$this->listViewEntries = $listViewModel->getListViewEntries($pagingModel);

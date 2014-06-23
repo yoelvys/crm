@@ -262,7 +262,6 @@ jQuery.Class("Vtiger_Popup_Js",{
 	    } else {
 		    view = view+'Ajax';
 	    }
-            console.log(view);
 	    return view;
 	},
 

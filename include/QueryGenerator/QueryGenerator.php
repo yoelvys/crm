@@ -168,6 +168,7 @@ class QueryGenerator {
 
 	public function initForCustomViewById($viewId) {
 		$customView = new CustomView($this->module);
+                 
 		$this->customViewColumnList = $customView->getColumnsListByCvid($viewId);
 		foreach ($this->customViewColumnList as $customViewColumnInfo) {
 			$details = explode(':', $customViewColumnInfo);
@@ -1245,6 +1246,8 @@ class QueryGenerator {
 		} else {
 			$this->startGroup(self::$AND);
 		}
+                
+                
 		$nameFieldList = explode(',',$this->getModuleNameFields($this->module));
 		foreach ($nameFieldList as $nameList) {
 			$field = $this->meta->getFieldByColumnName($nameList);
