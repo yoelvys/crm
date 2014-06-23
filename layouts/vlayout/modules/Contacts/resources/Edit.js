@@ -169,6 +169,7 @@ Vtiger_Edit_Js("Contacts_Edit_Js", {}, {
             }
         })
     },
+    
     updateAccountCountable: function(form) {
         jQuery('[name="pac_categoria"]', form).change(function() {
             var self = $(this);
@@ -191,8 +192,9 @@ Vtiger_Edit_Js("Contacts_Edit_Js", {}, {
             });
         });
     },
+    
     dateNow: function(form) {
-        if (jQuery('#Contacts_editView_fieldName_pac_fecha_ingreso', form).val() == '') {
+        if (jQuery('input[name="pac_codigo"]', form).val() == '') {
             var fullDate = new Date();
             var twoDigitMonth = ((fullDate.getMonth().length + 1) === 1) ? (fullDate.getMonth() + 1) : '0' + (fullDate.getMonth() + 1);
             jQuery('[name="pac_fecha_ingreso"]', form).val(twoDigitMonth + '-' + fullDate.getDate() + '-' + fullDate.getFullYear());
