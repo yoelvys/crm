@@ -12,7 +12,7 @@
 {strip}
 <div id="popupPageContainer" class="popupBackgroundColor">
 	<div class="paddingLeftRight10px">{include file='PopupSearchCustom.tpl'|vtemplate_path:$MODULE}</div>
-	<div id="PopupContents" class="paddingLeftRight10px">{include file='PopupContentsCustom.tpl'|vtemplate_path:$MODULE_NAME}</div>
+	<div id="PopupContentsCustom" class="paddingLeftRight10px">{include file='PopupContentsCustom.tpl'|vtemplate_path:$MODULE_NAME}</div>
 	<input type="hidden" class="triggerEventName" value="{$smarty.request.triggerEventName}"/>
 </div>
 </div>

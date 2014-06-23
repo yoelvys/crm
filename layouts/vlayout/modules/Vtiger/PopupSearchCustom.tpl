@@ -20,7 +20,7 @@
     <input type="hidden" id="currencyId" value="{$CURRENCY_ID}" />
     <input type="hidden" id="relatedParentModule" value="{$RELATED_PARENT_MODULE}"/>
     <input type="hidden" id="relatedParentId" value="{$RELATED_PARENT_ID}"/>
-    <input type="hidden" id="view" value="PopupAjax1"/>
+    <input type="hidden" id="view" value="PopupCustomAjax"/>
     <div class="popupContainer row-fluid">
         <div class="span12">
             <div class="row-fluid">
