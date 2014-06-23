@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.7, created on 2014-06-09 21:35:41
+<?php /* Smarty version Smarty-3.1.7, created on 2014-06-23 19:34:54
          compiled from "C:\xampp\htdocs\crm\includes\runtime/../../layouts/vlayout\modules\Settings\ModuleManager\ListContents.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:30764539628adc1e175-33063867%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'eea00d8d37ffc3fe0b90d31bb19ba4aeaa998c8b' => 
     array (
       0 => 'C:\\xampp\\htdocs\\crm\\includes\\runtime/../../layouts/vlayout\\modules\\Settings\\ModuleManager\\ListContents.tpl',
-      1 => 1401218526,
+      1 => 1403126418,
       2 => 'file',
     ),
   ),
@@ -15,6 +15,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.7',
+  'unifunc' => 'content_539628ae27b19',
   'variables' => 
   array (
     'QUALIFIED_MODULE' => 0,
@@ -29,8 +31,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'SETTINGS_LINK' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.7',
-  'unifunc' => 'content_539628ae27b19',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_539628ae27b19')) {function content_539628ae27b19($_smarty_tpl) {?>
 <div class="container-fluid" id="moduleManagerContents"><div class="widget_header row-fluid"><div class="span6"><h3><?php echo vtranslate('LBL_MODULE_MANAGER',$_smarty_tpl->tpl_vars['QUALIFIED_MODULE']->value);?>

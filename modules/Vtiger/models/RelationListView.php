@@ -247,6 +247,7 @@ class Vtiger_RelationListView_Model extends Vtiger_Base_Model {
 		$relatedModuleModel = $relationModel->getRelationModuleModel();
 
 		$summaryFieldsList = $relatedModuleModel->getSummaryViewFieldsList();
+               
 
 		$headerFields = array();
 		if(count($summaryFieldsList) > 0) {

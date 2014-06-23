@@ -107,19 +107,23 @@ class Contacts extends CRMEntity {
 	);
 
 	var $search_fields = Array(
-	'First Name' => Array('contactdetails'=>'firstname'),
-	'Last Name' => Array('contactdetails'=>'lastname'),
-	'Title' => Array('contactdetails'=>'title'),
-	'Account Name'=>Array('contactdetails'=>'account_id'),
-	'Assigned To'=>Array('crmentity'=>'smownerid'),
-		);
+            'First Name' => Array('contactdetails'=>'firstname'),
+            'Last Name' => Array('contactdetails'=>'lastname'),
+            'Company Name'=>Array('crmentity'=>'pac_razon_social'),
+            'Trade Name'=>Array('crmentity'=>'pac_nombre_comercial'),
+            'Title' => Array('contactdetails'=>'title'),
+            'Account Name'=>Array('contactdetails'=>'account_id'),
+            'Assigned To'=>Array('crmentity'=>'smownerid'),
+        );
 
 	var $search_fields_name = Array(
-	'First Name' => 'firstname',
-	'Last Name' => 'lastname',
-	'Title' => 'title',
-	'Account Name'=>'account_id',
-	'Assigned To'=>'assigned_user_id'
+            'First Name' => 'firstname',
+            'Last Name' => 'lastname',
+            'Company Name'=>'pac_razon_social',
+            'Trade Name'=>'pac_nombre_comercial',    
+            'Title' => 'title',
+            'Account Name'=>'account_id',
+            'Assigned To'=>'assigned_user_id',
 	);
 
 	// This is the list of vtiger_fields that are required
