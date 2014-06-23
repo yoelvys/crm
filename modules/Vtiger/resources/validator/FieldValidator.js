@@ -30,7 +30,7 @@ Vtiger_Base_Validator_Js("Vtiger_PACCeduleRUC_Validator_Js", {
             this.setError(errorInfo);
             return false;
         } else {
-            if ($('input[name="pac_validate_cedule_ruc"]:checked').val() == "on") {
+            if ($('input[name="pac_validate_cedule_ruc"]:checked').val() != "on") {
                 return true;
             } else {
                 if (isNaN(fieldValue)) { 
