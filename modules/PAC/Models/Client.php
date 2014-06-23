@@ -248,6 +248,7 @@ Class PAC_Client_Model {
             $dateAdmissionAux = DateTime::createFromFormat('m-d-Y', $dateAdmission);
             $dateAdmission = $dateAdmissionAux->format('Y-m-d');
         }
+        
         $officePhone = $clientJSONData['homephone']['value'];
         $homePhone = $clientJSONData['otherphone']['value'];
         $mobile = $clientJSONData['mobile']['value'];
@@ -364,7 +365,6 @@ Class PAC_Client_Model {
                 . "WHERE codcte01 = '" . $code . "';";
 
         $bd->execute($sql);
-        die();
     }
 
     public function getPACComboElements($tableNumber) {
