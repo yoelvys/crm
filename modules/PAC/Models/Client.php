@@ -236,7 +236,6 @@ Class PAC_Client_Model {
             $birthdayAux = DateTime::createFromFormat('m-d-Y', $birthday);
             $birthday = $birthdayAux->format('Y-m-d');
         }
-
         $sex = ($clientJSONData['pac_sexo']['value'] == 'M' ? 1 : ($clientJSONData['pac_sexo']['value'] == 'F' ? 0 : 'null') );
         $civilStatus = $clientJSONData['pac_estado_civil']['value'];
         $children = $clientJSONData['pac_numero_hijos']['value'] == '' ? 0 : $clientJSONData['pac_numero_hijos']['value'];
@@ -364,7 +363,6 @@ Class PAC_Client_Model {
                 . "WHERE codcte01 = '" . $code . "';";
 
         $bd->execute($sql);
-        die();
     }
 
     public function getPACComboElements($tableNumber) {
