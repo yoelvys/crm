@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.7, created on 2014-05-28 16:23:07
+<?php /* Smarty version Smarty-3.1.7, created on 2014-06-23 17:31:14
          compiled from "/var/www/crm/includes/runtime/../../layouts/vlayout/modules/Settings/LayoutEditor/RelatedList.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:148011159753860d6bba8995-36602337%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '63477fdc3ae2f1d0861f23d417b2632d3613aca7' => 
     array (
       0 => '/var/www/crm/includes/runtime/../../layouts/vlayout/modules/Settings/LayoutEditor/RelatedList.tpl',
-      1 => 1401218526,
+      1 => 1403124778,
       2 => 'file',
     ),
   ),
@@ -15,6 +15,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.7',
+  'unifunc' => 'content_53860d6bc9874',
   'variables' => 
   array (
     'RELATED_MODULES' => 0,
@@ -24,8 +26,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'ModulesList' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.7',
-  'unifunc' => 'content_53860d6bc9874',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_53860d6bc9874')) {function content_53860d6bc9874($_smarty_tpl) {?>
 <div class="relatedTabModulesList"><?php if (empty($_smarty_tpl->tpl_vars['RELATED_MODULES']->value)){?><div class="emptyRelatedTabs"><div class="recordDetails"><p class="textAlignCenter"><?php echo vtranslate('LBL_NO_RELATED_INFORMATION',$_smarty_tpl->tpl_vars['QUALIFIED_MODULE']->value);?>

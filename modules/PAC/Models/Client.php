@@ -465,5 +465,10 @@ Class PAC_Client_Model {
 
         return $this->getPACComboData($sql);
     }
+    public function getAccountCountableName($code){
+        $sql = "SELECT nomcta FROM `maecon` WHERE `ctamaecon` = '". $code ."';"; 
+        
+        return $this->getPACComboElement($sql);
+    }
 
 }

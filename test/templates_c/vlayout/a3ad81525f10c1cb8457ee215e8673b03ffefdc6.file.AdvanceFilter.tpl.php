@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.7, created on 2014-05-28 16:34:10
+<?php /* Smarty version Smarty-3.1.7, created on 2014-06-23 17:32:26
          compiled from "/var/www/crm/includes/runtime/../../layouts/vlayout/modules/Vtiger/AdvanceFilter.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:109535151753861002be4045-65749458%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'a3ad81525f10c1cb8457ee215e8673b03ffefdc6' => 
     array (
       0 => '/var/www/crm/includes/runtime/../../layouts/vlayout/modules/Vtiger/AdvanceFilter.tpl',
-      1 => 1401218526,
+      1 => 1403124778,
       2 => 'file',
     ),
   ),
@@ -15,6 +15,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.7',
+  'unifunc' => 'content_53861002d1444',
   'variables' => 
   array (
     'ADVANCE_CRITERIA' => 0,
@@ -32,8 +34,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'GROUP_CONDITION' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.7',
-  'unifunc' => 'content_53861002d1444',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_53861002d1444')) {function content_53861002d1444($_smarty_tpl) {?>
 <?php $_smarty_tpl->tpl_vars['ALL_CONDITION_CRITERIA'] = new Smarty_variable($_smarty_tpl->tpl_vars['ADVANCE_CRITERIA']->value[1], null, 0);?><?php $_smarty_tpl->tpl_vars['ANY_CONDITION_CRITERIA'] = new Smarty_variable($_smarty_tpl->tpl_vars['ADVANCE_CRITERIA']->value[2], null, 0);?><?php if (empty($_smarty_tpl->tpl_vars['ALL_CONDITION_CRITERIA']->value)){?><?php $_smarty_tpl->tpl_vars['ALL_CONDITION_CRITERIA'] = new Smarty_variable(array(), null, 0);?><?php }?><?php if (empty($_smarty_tpl->tpl_vars['ANY_CONDITION_CRITERIA']->value)){?><?php $_smarty_tpl->tpl_vars['ANY_CONDITION_CRITERIA'] = new Smarty_variable(array(), null, 0);?><?php }?><div class="filterContainer"><input type="hidden" name="date_filters" data-value='<?php echo Vtiger_Util_Helper::toSafeHTML(ZEND_JSON::encode($_smarty_tpl->tpl_vars['DATE_FILTERS']->value));?>
