@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.7, created on 2014-06-19 20:02:15
+<?php /* Smarty version Smarty-3.1.7, created on 2014-06-21 03:18:37
          compiled from "C:\xampp\htdocs\crm\includes\runtime/../../layouts/vlayout\modules\Vtiger\PopupContentsCustom.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:459453a07a5c2c44a1-16238196%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '259cbdf9432306106431ee15219d73964b4c7ee5' => 
     array (
       0 => 'C:\\xampp\\htdocs\\crm\\includes\\runtime/../../layouts/vlayout\\modules\\Vtiger\\PopupContentsCustom.tpl',
-      1 => 1403126422,
+      1 => 1403299185,
       2 => 'file',
     ),
   ),
@@ -24,8 +24,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'SOURCE_MODULE' => 0,
     'CURRENT_USER_MODEL' => 0,
     'LISTVIEW_ENTRIES' => 0,
-    'LISTVIEW_ENTRY' => 0,
     'KEY' => 0,
+    'LISTVIEW_ENTRY' => 0,
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
@@ -37,7 +37,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 foreach ($_from as $_smarty_tpl->tpl_vars['LISTVIEW_ENTRY']->key => $_smarty_tpl->tpl_vars['LISTVIEW_ENTRY']->value){
 $_smarty_tpl->tpl_vars['LISTVIEW_ENTRY']->_loop = true;
  $_smarty_tpl->tpl_vars['KEY']->value = $_smarty_tpl->tpl_vars['LISTVIEW_ENTRY']->key;
-?><tr class="listViewEntries" data-id="<?php echo $_smarty_tpl->tpl_vars['LISTVIEW_ENTRY']->value;?>
+?><tr class="listViewEntries" data-id="<?php echo $_smarty_tpl->tpl_vars['KEY']->value;?>
 " data-name='<?php echo $_smarty_tpl->tpl_vars['LISTVIEW_ENTRY']->value;?>
 ' data-code="<?php echo $_smarty_tpl->tpl_vars['KEY']->value;?>
 "><td><?php echo $_smarty_tpl->tpl_vars['KEY']->value;?>

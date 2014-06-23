@@ -247,6 +247,7 @@ Class PAC_Client_Model {
             $dateAdmissionAux = DateTime::createFromFormat('m-d-Y', $dateAdmission);
             $dateAdmission = $dateAdmissionAux->format('Y-m-d');
         }
+        
         $officePhone = $clientJSONData['homephone']['value'];
         $homePhone = $clientJSONData['otherphone']['value'];
         $mobile = $clientJSONData['mobile']['value'];
@@ -431,12 +432,12 @@ Class PAC_Client_Model {
     public function getAccountNameByCatCode($code) {
         $sql = "SELECT cta1cate  FROM `categorias` WHERE `tipocate` = '03' AND codcatep IN (0, 1) AND codcatep NOT IN ('') AND codcate = '" . $code . "';";
         $accountCode = $this->getPACComboElement($sql);
-        $sqlAccount = "SELECT nomcta FROM `maecon` WHERE `ctamaecon` = '" . $accountCode . "' ;";
-        $result = $this->getPACComboElement($sqlAccount);
-        if ($result == 'No encontrado') {
-            return '';
+        $sqlAccount = "SELECT nomcta FROM `maecon` WHERE `ctamaecon` = '". $accountCode ."' ;";
+        $nameAccount = $this->getPACComboElement($sqlAccount);
+        if ($nameAccount == 'No encontrado') {
+            return $resultArray = array('0'=>'', '1'=>'');
         }
-        return $result;
+        return $resultArray = array('0'=>$accountCode, '1'=>$nameAccount);
     }
 
     private function getPACComboData($sql) {

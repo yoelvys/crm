@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.7, created on 2014-06-19 16:18:15
+<?php /* Smarty version Smarty-3.1.7, created on 2014-06-21 03:18:28
          compiled from "C:\xampp\htdocs\crm\includes\runtime/../../layouts/vlayout\modules\Vtiger\uitypes\PACAccountCountable.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:20966539b29a967f950-36465407%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '8556f7e036eb012557affc42d89f0508b509c0c4' => 
     array (
       0 => 'C:\\xampp\\htdocs\\crm\\includes\\runtime/../../layouts/vlayout\\modules\\Vtiger\\uitypes\\PACAccountCountable.tpl',
-      1 => 1403126422,
+      1 => 1403299222,
       2 => 'file',
     ),
   ),
@@ -22,9 +22,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'FIELD_MODEL' => 0,
     'REFERENCE_LIST_COUNT' => 0,
     'FIELD_INFO' => 0,
-    'MODULE' => 0,
-    'SPECIAL_VALIDATOR' => 0,
     'FIELD_NAME' => 0,
+    'SPECIAL_VALIDATOR' => 0,
+    'MODULE' => 0,
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
@@ -35,10 +35,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 " class="sourceField" data-displayvalue='<?php echo $_smarty_tpl->tpl_vars['FIELD_MODEL']->value->getEditViewDisplayValue($_smarty_tpl->tpl_vars['FIELD_MODEL']->value->get('fieldvalue'));?>
 ' data-fieldinfo='<?php echo $_smarty_tpl->tpl_vars['FIELD_INFO']->value;?>
 ' data-code='<?php echo $_smarty_tpl->tpl_vars['FIELD_MODEL']->value->getEditViewDisplayValue($_smarty_tpl->tpl_vars['FIELD_MODEL']->value->get('fieldvalue'));?>
-' /><input id="<?php echo $_smarty_tpl->tpl_vars['MODULE']->value;?>
-_editView_fieldName_<?php echo $_smarty_tpl->tpl_vars['FIELD_MODEL']->value->get('name');?>
-" class="input-large" data-validation-engine="validate[<?php if ($_smarty_tpl->tpl_vars['FIELD_MODEL']->value->isMandatory()==true){?> required,<?php }?>funcCall[Vtiger_Base_Validator_Js.invokeValidation]]" name="<?php echo $_smarty_tpl->tpl_vars['FIELD_MODEL']->value->getFieldName();?>
-"value="<?php echo $_smarty_tpl->tpl_vars['FIELD_MODEL']->value->get('fieldvalue');?>
+' /><input id="<?php echo $_smarty_tpl->tpl_vars['FIELD_NAME']->value;?>
+_display" class="input-large" data-validation-engine="validate[<?php if ($_smarty_tpl->tpl_vars['FIELD_MODEL']->value->isMandatory()==true){?> required,<?php }?>funcCall[Vtiger_Base_Validator_Js.invokeValidation]]" name="<?php echo $_smarty_tpl->tpl_vars['FIELD_MODEL']->value->getFieldName();?>
+_display"value="<?php echo $_smarty_tpl->tpl_vars['FIELD_MODEL']->value->get('fieldvalue');?>
 "  data-fieldinfo='<?php echo $_smarty_tpl->tpl_vars['FIELD_INFO']->value;?>
 ' <?php if (!empty($_smarty_tpl->tpl_vars['SPECIAL_VALIDATOR']->value)){?>data-validator=<?php echo Zend_Json::encode($_smarty_tpl->tpl_vars['SPECIAL_VALIDATOR']->value);?>
 <?php }?> /><span class="add-on relatedPopupCustom cursorPointer"><i id="<?php echo $_smarty_tpl->tpl_vars['MODULE']->value;?>
