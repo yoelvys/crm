@@ -170,82 +170,10 @@ Vtiger_Edit_Js("Contacts_Edit_Js", {}, {
         })
     },
     
-    updateAccountCountable: function(form) {
-        jQuery('[name="pac_categoria"]', form).change(function() {
-            var self = $(this);
-            $.ajax({
-                type: 'post',
-                url: 'updateAccountCountable.php',
-                dataType: 'json',
-                data: {comboValue: self.val()},
-                success: function(data) {
-                    var sourceField = 'pac_cuenta_contable';
-                    var fieldElement = $('input[name="'+sourceField+'"]');
-                    var sourceFieldDisplay = sourceField+"_display";
-                    var fieldDisplayElement = $('input[name="'+sourceFieldDisplay+'"]');
-                    fieldElement.val(data.codeAccount);
-                    fieldDisplayElement.val(data.nameAccount).attr('readonly',true);
-                },
-                error: function(obj, nameAccount, c) {
-                    console.log(nameAccount);
-                }
-            });
-        });
-    },
-    
-    dateNow: function(form) {
-        if (jQuery('input[name="pac_codigo"]', form).val() == '') {
-            var fullDate = new Date();
-            var twoDigitMonth = ((fullDate.getMonth().length + 1) === 1) ? (fullDate.getMonth() + 1) : '0' + (fullDate.getMonth() + 1);
-            jQuery('[name="pac_fecha_ingreso"]', form).val(twoDigitMonth + '-' + fullDate.getDate() + '-' + fullDate.getFullYear());
-        }
-    },
-    
-    checkValidate: function(form) {
-        $('input[name="pac_validate_cedule_ruc"]',form).click(function(){  
-            $('input[name="pac_cedula"]').val('');
-        });
-    },
-    
-    selectPersonType: function(form) {
-        var self = this;
-        jQuery('[name="pac_tipo_persona"]', form).change(function() {
-            self.showFieldByPersonType(form);
-        });
-    },
-    showFieldByPersonType: function(form) {
-        var personType = jQuery('[name="pac_tipo_persona"]', form).val();
-        if(personType == ''){
-           personType = jQuery('[name="pac_tipo_persona"]', form).text(); 
-        }
-        var salutationType = jQuery('[name="salutationtype"]', form);
-        var firstname = jQuery('[name="firstname"]', form);
-        var lastname = jQuery('[name="lastname"]', form);
-        var companyName = jQuery('[name="pac_razon_social"]', form);
-        if(personType == 'Natural'){
-          companyName.attr('disabled','disabled');
-          
-          salutationType.removeAttr('disabled'); 
-          firstname.removeAttr('disabled'); 
-          lastname.removeAttr('disabled'); 
-        }else if(personType == 'Jurídica'){
-          salutationType.attr('disabled','disabled');
-          firstname.attr('disabled','disabled'); 
-          lastname.attr('disabled','disabled'); 
-          
-          companyName.removeAttr('disabled'); 
-        }
-    },
     registerBasicEvents: function(container) {
         this._super(container);
         this.registerReferenceSelectionEvent(container);
         this.registerEventForCopyingAddress(container);
         this.registerRecordPreSaveEvent(container);
-        this.updateAccountCountable(container);
-        this.dateNow(container);
-        this.checkValidate(container);
-        this.selectPersonType(container);
-        this.showFieldByPersonType(container);
-
     }
 })

@@ -3,8 +3,8 @@ $Vtiger_Utils_Log = true;
 include_once('vtlib/Vtiger/Menu.php');
 include_once('vtlib/Vtiger/Module.php');
 
-$module = Vtiger_Module::getInstance('Contacts');
-$block = Vtiger_Block::getInstance('LBL_CONTACT_INFORMATION',$module);
+$module = Vtiger_Module::getInstance('Accounts');
+$block = Vtiger_Block::getInstance('LBL_ACCOUNT_INFORMATION',$module);
 
 $blockPersonType = new Vtiger_Block();
 $blockPersonType->label = 'LBL_PERSON_TYPE';

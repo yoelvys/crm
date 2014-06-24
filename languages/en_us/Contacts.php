@@ -20,14 +20,7 @@ $languageStrings = array(
 	'LBL_IMAGE_INFORMATION' => 'Profile Picture',
 	'LBL_COPY_OTHER_ADDRESS' => 'Copy Other Address',
 	'LBL_COPY_MAILING_ADDRESS' => 'Copy Mailing Address',
-        'LBL_RELATIONSHIP'         => 'RelationShip / Responsability', 
-        'LBL_CONDITIONS'           => 'Established Conditions',
-        'LBL_LEGAL_REPRESENTATIVE_INFORMATION' => 'Legal Representative Information',
-        'LBL_CREDIT_DATA'          => 'Credit Information',
-        'LBL_WARRANTY_DATA'        => 'Data Warranties',
-        'LBL_TECHNICAL_SUPPORT_DATA'   => 'Data Support',
-        'LBL_PERSON_TYPE' => 'Person Type',
-
+        
 	//Field Labels
 	'Office Phone' => 'Office Phone',
 	'Home Phone' => 'Home Phone',
