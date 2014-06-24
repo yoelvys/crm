@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.7, created on 2014-05-29 20:40:28
+<?php /* Smarty version Smarty-3.1.7, created on 2014-06-23 17:30:48
          compiled from "/var/www/crm/includes/runtime/../../layouts/vlayout/modules/Settings/Vtiger/CustomRecordNumbering.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1826905753879b3cb8be48-30725664%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '2e90352dd4413702e5d401c958b933ffc33e12a8' => 
     array (
       0 => '/var/www/crm/includes/runtime/../../layouts/vlayout/modules/Settings/Vtiger/CustomRecordNumbering.tpl',
-      1 => 1401218526,
+      1 => 1403124778,
       2 => 'file',
     ),
   ),
@@ -15,6 +15,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.7',
+  'unifunc' => 'content_53879b3cc2dd6',
   'variables' => 
   array (
     'QUALIFIED_MODULE' => 0,
@@ -26,8 +28,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'DEFAULT_MODULE_DATA' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.7',
-  'unifunc' => 'content_53879b3cc2dd6',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_53879b3cc2dd6')) {function content_53879b3cc2dd6($_smarty_tpl) {?>
 <div class="container-fluid"><form id="EditView"><div class="row-fluid"><span class="widget_header row-fluid"><div class="row-fluid"><h3><?php echo vtranslate('LBL_CUSTOMIZE_RECORD_NUMBERING',$_smarty_tpl->tpl_vars['QUALIFIED_MODULE']->value);?>

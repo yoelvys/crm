@@ -140,6 +140,7 @@ class Vtiger_Field_Model extends Vtiger_Field {
      */
     public function getFieldDataType() {
         if (!$this->fieldDataType) {
+            
             $uiType = $this->get('uitype');
             if ($uiType == '69') {
                 $fieldDataType = 'image';

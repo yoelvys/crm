@@ -429,8 +429,13 @@ class ListViewController {
 					}
 				} elseif ( in_array($uitype,array(7,9,90)) ) {
 					$value = "<span align='right'>".textlength_check($value)."</div>";
-				} else {
-					$value = textlength_check($value);
+                                }
+                                else {   
+                                    
+                                    $fieldModelInstance = Vtiger_Field_Model::getInstance($field->getFieldId());
+                                    $uitypeInstance = Vtiger_Base_UIType::getInstanceFromField($fieldModelInstance);
+                                    $value = $uitypeInstance->getDisplayValue($value);
+                                    $value = textlength_check($value);
 				}
 
 //				// vtlib customization: For listview javascript triggers
@@ -438,6 +443,7 @@ class ListViewController {
 //					"'{$fieldName}' vtmodule='$module' style='display:none;'></span>";
 //				// END
 				$row[$fieldName] = $value;
+                                
 			}
 			$data[$recordId] = $row;
 		}

@@ -17,4 +17,10 @@ class Vtiger_PACAccountCountable_UIType extends Vtiger_Base_UIType {
 	public function getTemplateName() {
 		return 'uitypes/PACAccountCountable.tpl';
 	}
+        
+        public function getDisplayValue($code) {               
+        $client = PAC_Client_Model::getInstance();
+
+        return $client->getAccountCountableName($code);
+    }
 }
