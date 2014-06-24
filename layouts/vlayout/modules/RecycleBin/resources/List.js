@@ -212,7 +212,6 @@ Vtiger_List_Js("RecycleBin_List_Js",{
 				element.progressIndicator({});
 				AppConnector.request(pageCountParams).then(
 					function(data) {
-						console.log(data);
 						var response = JSON.parse(data);
 						var pageCount = response['result']['page'];
 						element.text(pageCount);
