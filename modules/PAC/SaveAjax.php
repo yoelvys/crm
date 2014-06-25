@@ -23,9 +23,8 @@ Class SaveAjax {
     }
 
     public function process(Vtiger_Request $request, $clientJSONData) {
-        switch ($request->getModule()) {
-            
-            case 'Contacts':
+        switch ($request->getModule()) {   
+            case 'Accounts':
                 $client = PAC_Client_Model::getInstance();
                 $client->updateAjax($clientJSONData);
                 break;

@@ -41,6 +41,7 @@ class Vtiger_SaveAjax_Action extends Vtiger_Save_Action {
 
         $result['_recordLabel'] = $recordModel->getName();
         $result['_recordId'] = $recordModel->getId();
+        
         $saveAjax = SaveAjax::getInstance();
         $saveAjax->process($request, $result);
         

@@ -59,7 +59,7 @@ $languageStrings = array(
 	'LBL_START_DATE'               => 'Inicio',
 	'LBL_END_DATE'                 => 'Vencimiento',
 	'LBL_DUPLICATES_EXIST'         => 'Una cuenta con este nombre ya existe',
-	'LBL_COPY_SHIPPING_ADDRESS' => 'Copiar Dirección Envío',
+	'LBL_COPY_SHIPPING_ADDRESS' => 'Copiar Dirección Gestión',
 	'LBL_COPY_BILLING_ADDRESS' => 'Copiar Dirección Facturación',
 );
 $jsLanguageStrings = array(
