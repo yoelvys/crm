@@ -25,7 +25,7 @@ Class PAC_Client_Model {
     public function process(Vtiger_Request $request) {
 
         $bd = ConnectionPAC::getInstance();
-        $name = $request->get('pac_tipo_persona') == "Natural" ? $request->get('firstname') . " " . $request->get('lastname') : $request->get('pac_razon_social');
+        $name = $request->get('accountname');
         $cedulaRuc = $request->get('pac_cedula');
         $code = $request->get('pac_codigo');
         $category = $request->get('pac_categoria');
@@ -37,18 +37,16 @@ Class PAC_Client_Model {
         }
         $sex = ($request->get('pac_sexo') == 'M' ? 1 : ($request->get('pac_sexo') == 'F' ? 0 : 'null') );
         $civilStatus = $request->get('pac_estado_civil');
-        $children = $request->get('pac_numero_hijos') == '' ? 0 : $request->get('pac_numero_hijos');
-        $address = $request->get('mailingstreet');
-        $addressGestion = $request->get('pac_direccion_gestion');
+        $address = $request->get('billstreet');
+        $addressGestion = $request->get('shipstreet');
         $dateAdmission = $request->get('pac_fecha_ingreso');
         if ($dateAdmission != '') {
             $dateAdmissionAux = DateTime::createFromFormat('m-d-Y', $dateAdmission);
             $dateAdmission = $dateAdmissionAux->format('Y-m-d');
         }
 
-        $officePhone = $request->get('homephone');
+        $officePhone = $request->get('phone');
         $homePhone = $request->get('otherphone');
-        $mobile = $request->get('mobile');
         $email = $request->get('email1');
         $alternativeEmail = $request->get('email2');
         $webSite = $request->get('website');
@@ -78,7 +76,8 @@ Class PAC_Client_Model {
         $withIVA = $request->get('pac_con_iva') == 'on' ? 'S' : 'N';
         $printBarcode = $request->get('pac_imprimir_barcod') == 'on' ? 'S' : 'N';
         $accountCountable = $request->get('pac_cuenta_contable');
-        $companyName = $request->get('pac_razon_social');
+        $companyName = $request->get('pac_tipo_persona') == "Natural" ? " " : $request->get('accountname');
+       
 
         $legalRepresentative = $request->get('pac_representante');
         $rucRepresentative = $request->get('pac_ruc_representante');
@@ -89,16 +88,7 @@ Class PAC_Client_Model {
         $bankReferences = $request->get('pac_referencias_bancarias');
         $tradeReferences = $request->get('pac_referencias_comerciales');
         $creditCards = $request->get('pac_tarjetas_credito');
-
-
-        $promissoryNote = $request->get('pac_pagare') == 'on' ? 'S' : 'N';
-        $promissoryNoteValue = $request->get('pac_valor_pagare') == '' ? 0 : $request->get('pac_valor_pagare');
-        $guarantor = $request->get('pac_garante') == 'on' ? 'S' : 'N';
-        $expirationDate = $request->get('pac_fecha_vencimiento');
-        if ($expirationDate != '') {
-            $expirationDateAux = DateTime::createFromFormat('m-d-Y', $expirationDate);
-            $expirationDate = $expirationDateAux->format('Y-m-d');
-        }
+        
 
         $holderStatus = $request->get('pac_estado_soporte');
         $ticketNumber = $request->get('pac_numero_ticket');
@@ -109,8 +99,8 @@ Class PAC_Client_Model {
             $sql = "INSERT INTO maecte (codcte01,nomcte01,dircte01,telcte01,cascte01,emailcte01,emailaltcte01,website,loccte01,pagleg01,ofienccte01,"
                     . "vendcte01,cobrcte01,cordcte01,precte01,condpag01,limcred01,cuotasven01,diasven01,limcant01,desctocte01,promocte01,cheqpro01,"
                     . "obsercte01,acceder,idemp01,codprov01,desppar01,coniva01,cv2cte01,ctacgcte01,razcte01,repleg01,ruc01,timenegocio01,dircliente01,"
-                    . "telcte01c,refbanc01,refcom01,tarjcred01,pagare01,valorpagare01,garante01,fecvenp01,estsop01,notick01,tipcte01,fechanace01,"
-                    . "sexo01,estadocivil01,numhijos01,dirgestion01,fecing01,telcte01b,celular01,catcte01) "
+                    . "telcte01c,refbanc01,refcom01,tarjcred01,estsop01,notick01,tipcte01,fechanace01,"
+                    . "sexo01,estadocivil01,dirgestion01,fecing01,telcte01b,catcte01) "
                     . "VALUES ('" . $code . "',"
                     . "'" . $name . "','" . $address . "','" . $homePhone . "','" . $cedulaRuc . "','" . $email . "','" . $alternativeEmail . "',"
                     . "'" . $webSite . "',"
@@ -146,21 +136,15 @@ Class PAC_Client_Model {
                     . "'" . $bankReferences . "',"
                     . "'" . $tradeReferences . "',"
                     . "'" . $creditCards . "',"
-                    . "'" . $promissoryNote . "',"
-                    . $promissoryNoteValue . ","
-                    . "'" . $guarantor . "',"
-                    . "'" . $expirationDate . "',"
                     . "'" . $holderStatus . "',"
                     . "'" . $ticketNumber . "',"
                     . "'" . $clientType . "',"
                     . "'" . $birthday . "',"
                     . $sex . ","
                     . "'" . $civilStatus . "',"
-                    . $children . ","
                     . "'" . $addressGestion . "',"
                     . "'" . $dateAdmission . "',"
                     . "'" . $officePhone . "',"
-                    . "'" . $mobile . "',"
                     . "'" . $category . "') ;";
         } else {
             $sql = "UPDATE maecte SET nomcte01 = '" . $name . "', "
@@ -202,21 +186,15 @@ Class PAC_Client_Model {
                     . "refbanc01 = '" . $bankReferences . "', "
                     . "refcom01 = '" . $tradeReferences . "', "
                     . "tarjcred01 = '" . $creditCards . "', "
-                    . "pagare01 = '" . $promissoryNote . "', "
-                    . "valorpagare01 = " . $promissoryNoteValue . ", "
-                    . "garante01 = '" . $guarantor . "', "
-                    . "fecvenp01 = '" . $expirationDate . "', "
                     . "estsop01 = '" . $holderStatus . "', "
                     . "notick01 = '" . $ticketNumber . "', "
                     . "tipcte01 = '" . $clientType . "', "
                     . "fechanace01 = '" . $birthday . "', "
                     . "sexo01 = " . $sex . ", "
                     . "estadocivil01 = '" . $civilStatus . "', "
-                    . "numhijos01 = " . $children . ", "
                     . "dirgestion01 = '" . $addressGestion . "', "
                     . "fecing01 = '" . $dateAdmission . "', "
                     . "telcte01b = '" . $officePhone . "', "
-                    . "celular01 = '" . $mobile . "', "
                     . "catcte01 = '" . $category . "' "
                     . "WHERE codcte01 = '" . $code . "';";
         }
@@ -226,7 +204,7 @@ Class PAC_Client_Model {
 
     public function updateAjax($clientJSONData) {
         $bd = ConnectionPAC::getInstance();
-        $name = $clientJSONData['pac_tipo_persona']['value'] == "Natural" ? $clientJSONData['firstname']['value'] . " " . $clientJSONData['lastname']['value'] : $clientJSONData['pac_razon_social']['value'];
+        $name = $clientJSONData['accountname']['value'];
         $cedulaRuc = $clientJSONData['pac_cedula']['value'];
         $code = $category = $clientJSONData['pac_codigo']['value'];
         $category = $clientJSONData['pac_categoria']['value'];
@@ -238,9 +216,8 @@ Class PAC_Client_Model {
         }
         $sex = ($clientJSONData['pac_sexo']['value'] == 'M' ? 1 : ($clientJSONData['pac_sexo']['value'] == 'F' ? 0 : 'null') );
         $civilStatus = $clientJSONData['pac_estado_civil']['value'];
-        $children = $clientJSONData['pac_numero_hijos']['value'] == '' ? 0 : $clientJSONData['pac_numero_hijos']['value'];
-        $address = $clientJSONData['mailingstreet']['value'];
-        $addressGestion = $clientJSONData['pac_direccion_gestion']['value'];
+        $address = $clientJSONData['billstreet']['value'];
+        $addressGestion = $clientJSONData['shipstreet']['value'];
 
         $dateAdmission = $clientJSONData['pac_fecha_ingreso']['value'];
         if ($dateAdmission != '') {
@@ -248,9 +225,8 @@ Class PAC_Client_Model {
             $dateAdmission = $dateAdmissionAux->format('Y-m-d');
         }
         
-        $officePhone = $clientJSONData['homephone']['value'];
+        $officePhone = $clientJSONData['phone']['value'];
         $homePhone = $clientJSONData['otherphone']['value'];
-        $mobile = $clientJSONData['mobile']['value'];
         $email = $clientJSONData['email1']['value'];
         $alternativeEmail = $clientJSONData['email2']['value'];
         $webSite = $clientJSONData['website']['value'];
@@ -280,7 +256,8 @@ Class PAC_Client_Model {
         $withIVA = $clientJSONData['pac_con_iva']['value'] == 'on' ? 'S' : 'N';
         $printBarcode = $clientJSONData['pac_imprimir_barcod']['value'] == 'on' ? 'S' : 'N';
         $accountCountable = $clientJSONData['pac_cuenta_contable']['value'];
-        $companyName = $clientJSONData['pac_razon_social']['value'];
+        $companyName = $clientJSONData['pac_tipo_persona']['value'] == "Natural" ? "" : $clientJSONData['accountname']['value'];
+        
 
         $legalRepresentative = $clientJSONData['pac_representante']['value'];
         $rucRepresentative = $clientJSONData['pac_ruc_representante']['value'];
@@ -292,16 +269,8 @@ Class PAC_Client_Model {
         $tradeReferences = $clientJSONData['pac_referencias_comerciales']['value'];
         $creditCards = $clientJSONData['pac_tarjetas_credito']['value'];
 
-
-        $promissoryNote = $clientJSONData['pac_pagare']['value'] == 'on' ? 'S' : 'N';
-        $promissoryNoteValue = $clientJSONData['pac_valor_pagare']['value'] == '' ? 0 : $clientJSONData['pac_valor_pagare']['value'];
-        $guarantor = $clientJSONData['pac_garante']['value'] == 'on' ? 'S' : 'N';
-
-        $expirationDate = $clientJSONData['pac_fecha_vencimiento']['value'];
-        if ($expirationDate != '') {
-            $expirationDateAux = DateTime::createFromFormat('m-d-Y', $expirationDate);
-            $expirationDate = $expirationDateAux->format('Y-m-d');
-        }
+        
+        
 
         $holderStatus = $clientJSONData['pac_estado_soporte']['value'];
         $ticketNumber = $clientJSONData['pac_numero_ticket']['value'];
@@ -345,21 +314,15 @@ Class PAC_Client_Model {
                 . "refbanc01 = '" . $bankReferences . "', "
                 . "refcom01 = '" . $tradeReferences . "', "
                 . "tarjcred01 = '" . $creditCards . "', "
-                . "pagare01 = '" . $promissoryNote . "', "
-                . "valorpagare01 = " . $promissoryNoteValue . ", "
-                . "garante01 = '" . $guarantor . "', "
-                . "fecvenp01 = '" . $expirationDate . "', "
                 . "estsop01 = '" . $holderStatus . "', "
                 . "notick01 = '" . $ticketNumber . "', "
                 . "tipcte01 = '" . $clientType . "', "
                 . "fechanace01 = '" . $birthday . "', "
                 . "sexo01 = " . $sex . ", "
                 . "estadocivil01 = '" . $civilStatus . "', "
-                . "numhijos01 = " . $children . ", "
                 . "dirgestion01 = '" . $addressGestion . "', "
                 . "fecing01 = '" . $dateAdmission . "', "
                 . "telcte01b = '" . $officePhone . "', "
-                . "celular01 = '" . $mobile . "', "
                 . "catcte01 = '" . $category . "' "
                 . "WHERE codcte01 = '" . $code . "';";
 

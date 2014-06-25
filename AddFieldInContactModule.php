@@ -490,6 +490,7 @@ $blockCreditData->addField($field53);
 
 /*--- FIN DATOS PARA SOLICITUD DE CREDITO  ------*/
 
+
 /*--- DATOS SOPORTE TECNICO  ------*/
 $blockTechnicalSupportData = new Vtiger_Block();
 $blockTechnicalSupportData->label = 'LBL_TECHNICAL_SUPPORT_DATA';
