@@ -33,11 +33,7 @@ Class PAC_Client_Model {
         $code = $request->get('pac_codigo');
         $category = $request->get('pac_categoria');
         $clientType = $request->get('pac_tipo_cliente');
-        $birthday = $request->get('birthday');
-        if ($birthday != '') {
-            $birthdayAux = DateTime::createFromFormat('m-d-Y', $birthday);
-            $birthday = $birthdayAux->format('Y-m-d');
-        }
+        
         $sex = ($request->get('pac_sexo') == 'M' ? 1 : ($request->get('pac_sexo') == 'F' ? 0 : 'null') );
         $civilStatus = $request->get('pac_estado_civil');
         $address = $request->get('billstreet');
@@ -142,7 +138,6 @@ Class PAC_Client_Model {
                     . "'" . $holderStatus . "',"
                     . "'" . $ticketNumber . "',"
                     . "'" . $clientType . "',"
-                    . "'" . $birthday . "',"
                     . $sex . ","
                     . "'" . $civilStatus . "',"
                     . "'" . $addressGestion . "',"
@@ -192,7 +187,6 @@ Class PAC_Client_Model {
                     . "estsop01 = '" . $holderStatus . "', "
                     . "notick01 = '" . $ticketNumber . "', "
                     . "tipcte01 = '" . $clientType . "', "
-                    . "fechanace01 = '" . $birthday . "', "
                     . "sexo01 = " . $sex . ", "
                     . "estadocivil01 = '" . $civilStatus . "', "
                     . "dirgestion01 = '" . $addressGestion . "', "
