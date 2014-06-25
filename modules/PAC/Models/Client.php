@@ -48,8 +48,8 @@ Class PAC_Client_Model {
             $dateAdmission = $dateAdmissionAux->format('Y-m-d');
         }
 
-        $officePhone = $request->get('phone');
-        $homePhone = $request->get('otherphone');
+        $officePhone = $request->get('otherphone');
+        $homePhone = $request->get('phone');
         $email = $request->get('email1');
         $alternativeEmail = $request->get('email2');
         $webSite = $request->get('website');
@@ -227,8 +227,8 @@ Class PAC_Client_Model {
             $dateAdmission = $dateAdmissionAux->format('Y-m-d');
         }
         
-        $officePhone = $clientJSONData['phone']['value'];
-        $homePhone = $clientJSONData['otherphone']['value'];
+        $officePhone = $clientJSONData['otherphone']['value'];
+        $homePhone = $clientJSONData['phone']['value'];
         $email = $clientJSONData['email1']['value'];
         $alternativeEmail = $clientJSONData['email2']['value'];
         $webSite = $clientJSONData['website']['value'];
@@ -270,9 +270,6 @@ Class PAC_Client_Model {
         $bankReferences = $clientJSONData['pac_referencias_bancarias']['value'];
         $tradeReferences = $clientJSONData['pac_referencias_comerciales']['value'];
         $creditCards = $clientJSONData['pac_tarjetas_credito']['value'];
-
-        
-        
 
         $holderStatus = $clientJSONData['pac_estado_soporte']['value'];
         $ticketNumber = $clientJSONData['pac_numero_ticket']['value'];
