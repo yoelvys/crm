@@ -10,10 +10,7 @@
 
 class Vtiger_PACCeduleRUC_UIType extends Vtiger_Base_UIType {
 
-	/**
-	 * Function to get the Template name for the current UI Type object
-	 * @return <String> - Template Name
-	 */
+
 	public function getTemplateName() {
 		return 'uitypes/PACCeduleRUC.tpl';
 	}

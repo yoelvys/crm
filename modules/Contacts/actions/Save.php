@@ -9,7 +9,7 @@
  * All Rights Reserved.
  * *********************************************************************************** */
 
-require_once('modules/PAC/Models/Client.php');
+
 class Contacts_Save_Action extends Vtiger_Save_Action {
 
 	public function process(Vtiger_Request $request) {
@@ -21,10 +21,7 @@ class Contacts_Save_Action extends Vtiger_Save_Action {
 		if ($salutationType === '--None--') {
 			$request->set('salutationtype', '');
 		}
-		$client = PAC_Client_Model::getInstance();
-
-		$client->process($request);
-             
+		
 		parent::process($request);
 	}
 }

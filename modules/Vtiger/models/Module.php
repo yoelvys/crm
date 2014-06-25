@@ -140,7 +140,6 @@ class Vtiger_Module_Model extends Vtiger_Module {
 	 * @param Vtiger_Record_Model $recordModel
 	 */
 	public function saveRecord(Vtiger_Record_Model $recordModel) {
-           
 		$moduleName = $this->get('name');
 		$focus = CRMEntity::getInstance($moduleName);
 		$fields = $focus->column_fields;
@@ -157,7 +156,6 @@ class Vtiger_Module_Model extends Vtiger_Module {
 		$focus->id = $recordModel->getId();
                 
 		$focus->save($moduleName);
-                
 		return $recordModel->setId($focus->id);
 	}
 

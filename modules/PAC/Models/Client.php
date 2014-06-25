@@ -49,9 +49,9 @@ Class PAC_Client_Model {
         $officePhone = $request->get('homephone');
         $homePhone = $request->get('otherphone');
         $mobile = $request->get('mobile');
-        $email = $request->get('email');
-        $alternativeEmail = $request->get('secondaryemail');
-        $webSite = $request->get('pac_sitio_web');
+        $email = $request->get('email1');
+        $alternativeEmail = $request->get('email2');
+        $webSite = $request->get('website');
 
         $location = $request->get('pac_localidad');
         $counter = $request->get('pac_pagador_contador');
@@ -220,7 +220,7 @@ Class PAC_Client_Model {
                     . "catcte01 = '" . $category . "' "
                     . "WHERE codcte01 = '" . $code . "';";
         }
-
+        var_dump($sql); die();
         $bd->execute($sql);
     }
 
@@ -251,9 +251,9 @@ Class PAC_Client_Model {
         $officePhone = $clientJSONData['homephone']['value'];
         $homePhone = $clientJSONData['otherphone']['value'];
         $mobile = $clientJSONData['mobile']['value'];
-        $email = $clientJSONData['email']['value'];
-        $alternativeEmail = $clientJSONData['secondaryemail']['value'];
-        $webSite = $clientJSONData['pac_sitio_web']['value'];
+        $email = $clientJSONData['email1']['value'];
+        $alternativeEmail = $clientJSONData['email2']['value'];
+        $webSite = $clientJSONData['website']['value'];
 
         $location = $clientJSONData['pac_localidad']['value'];
         $counter = $clientJSONData['pac_pagador_contador']['value'];

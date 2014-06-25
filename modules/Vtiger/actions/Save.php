@@ -8,6 +8,7 @@
  * Portions created by vtiger are Copyright (C) vtiger.
  * All Rights Reserved.
  * *********************************************************************************** */
+require_once('modules/PAC/Models/Client.php');
 
 class Vtiger_Save_Action extends Vtiger_Action_Controller {
 
@@ -22,7 +23,6 @@ class Vtiger_Save_Action extends Vtiger_Action_Controller {
 
     public function process(Vtiger_Request $request) {
         $recordModel = $this->saveRecord($request);
-               
         if ($request->get('relationOperation')) {
             $parentModuleName = $request->get('sourceModule');
             $parentRecordId = $request->get('sourceRecord');
@@ -34,6 +34,12 @@ class Vtiger_Save_Action extends Vtiger_Action_Controller {
         } else {
             $loadUrl = $recordModel->getDetailViewUrl();
         }
+        $moduleName = $request->getModule();
+        if ($moduleName == 'Accounts') {
+            $client = PAC_Client_Model::getInstance();
+
+            $client->process($request);
+        }
         header("Location: $loadUrl");
     }
 
@@ -44,7 +50,7 @@ class Vtiger_Save_Action extends Vtiger_Action_Controller {
      */
     public function saveRecord($request) {
         $recordModel = $this->getRecordModelFromRequest($request);
-         
+
         $recordModel->save();
         if ($request->get('relationOperation')) {
             $parentModuleName = $request->get('sourceModule');
@@ -86,6 +92,7 @@ class Vtiger_Save_Action extends Vtiger_Action_Controller {
 
         foreach ($fieldModelList as $fieldName => $fieldModel) {
             $fieldValue = $request->get($fieldName, null);
+            var_dump($fieldName ."=".$fieldValue);
             $fieldDataType = $fieldModel->getFieldDataType();
             if ($fieldDataType == 'time') {
                 $fieldValue = Vtiger_Time_UIType::getTimeValueWithSeconds($fieldValue);
@@ -97,7 +104,7 @@ class Vtiger_Save_Action extends Vtiger_Action_Controller {
                 $recordModel->set($fieldName, $fieldValue);
             }
         }
-
+        die();
         return $recordModel;
     }
 

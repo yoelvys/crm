@@ -239,7 +239,6 @@ class Vtiger_List_View extends Vtiger_Index_View {
 		$listViewModel->set('operator', $request->get('operator'));
 
 		$count = $listViewModel->getListViewCount();
-
 		return $count;
 	}
 
