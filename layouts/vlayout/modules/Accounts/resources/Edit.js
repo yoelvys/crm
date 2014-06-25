@@ -205,6 +205,7 @@ Vtiger_Edit_Js("Accounts_Edit_Js", {
             container.find('[name="' + addressDetails[key] + '"]').trigger('change');
         }
     },
+    
     dateNow: function(form) {
         if (jQuery('input[name="pac_codigo"]', form).val() == '') {
             var fullDate = new Date();
@@ -212,11 +213,13 @@ Vtiger_Edit_Js("Accounts_Edit_Js", {
             jQuery('[name="pac_fecha_ingreso"]', form).val(twoDigitMonth + '-' + fullDate.getDate() + '-' + fullDate.getFullYear());
         }
     },
+    
     checkValidate: function(form) {
         $('input[name="pac_validate_cedule_ruc"]', form).click(function() {
             $('input[name="pac_cedula"]').val('');
         });
     },
+    
     updateAccountCountable: function(form) {
         jQuery('[name="pac_categoria"]', form).change(function() {
             var self = $(this);
