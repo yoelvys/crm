@@ -211,11 +211,7 @@ Class PAC_Client_Model {
         $code = $category = $clientJSONData['pac_codigo']['value'];
         $category = $clientJSONData['pac_categoria']['value'];
         $clientType = $clientJSONData['pac_tipo_cliente']['value'];
-        $birthday = $clientJSONData['birthday']['value'];
-        if ($birthday != '') {
-            $birthdayAux = DateTime::createFromFormat('m-d-Y', $birthday);
-            $birthday = $birthdayAux->format('Y-m-d');
-        }
+        
         $sex = ($clientJSONData['pac_sexo']['value'] == 'M' ? 1 : ($clientJSONData['pac_sexo']['value'] == 'F' ? 0 : 'null') );
         $civilStatus = $clientJSONData['pac_estado_civil']['value'];
         $address = $clientJSONData['billstreet']['value'];
@@ -258,8 +254,7 @@ Class PAC_Client_Model {
         $withIVA = $clientJSONData['pac_con_iva']['value'] == 'on' ? 'S' : 'N';
         $printBarcode = $clientJSONData['pac_imprimir_barcod']['value'] == 'on' ? 'S' : 'N';
         $accountCountable = $clientJSONData['pac_cuenta_contable']['value'];
-        $companyName = $clientJSONData['pac_tipo_persona']['value'] == "Natural" ? "" : $clientJSONData['accountname']['value'];
-        
+        $companyName = $clientJSONData['pac_tipo_persona']['value'] == "Natural" ? '' : $clientJSONData['accountname']['value'];  
 
         $legalRepresentative = $clientJSONData['pac_representante']['value'];
         $rucRepresentative = $clientJSONData['pac_ruc_representante']['value'];
@@ -316,7 +311,6 @@ Class PAC_Client_Model {
                 . "estsop01 = '" . $holderStatus . "', "
                 . "notick01 = '" . $ticketNumber . "', "
                 . "tipcte01 = '" . $clientType . "', "
-                . "fechanace01 = '" . $birthday . "', "
                 . "sexo01 = " . $sex . ", "
                 . "estadocivil01 = '" . $civilStatus . "', "
                 . "dirgestion01 = '" . $addressGestion . "', "
