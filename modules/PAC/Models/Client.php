@@ -2,9 +2,6 @@
 
 require_once('modules/PAC/ConnectionPAC.php');
 
-
-
-
 Class PAC_Client_Model {
 
     static $instance;
@@ -32,7 +29,7 @@ Class PAC_Client_Model {
         $code = $request->get('pac_codigo');
         $category = $request->get('pac_categoria');
         $clientType = $request->get('pac_tipo_cliente');
-        
+
         $sex = ($request->get('pac_sexo') == 'M' ? 1 : ($request->get('pac_sexo') == 'F' ? 0 : 'null') );
         $civilStatus = $request->get('pac_estado_civil');
         $address = $request->get('bill_street');
@@ -75,7 +72,7 @@ Class PAC_Client_Model {
         $printBarcode = $request->get('pac_imprimir_barcod') == 'on' ? 'S' : 'N';
         $accountCountable = $request->get('pac_cuenta_contable');
         $companyName = $request->get('pac_tipo_persona') == "Natural" ? " " : $request->get('accountname');
-       
+
 
         $legalRepresentative = $request->get('pac_representante');
         $rucRepresentative = $request->get('pac_ruc_representante');
@@ -86,7 +83,7 @@ Class PAC_Client_Model {
         $bankReferences = $request->get('pac_referencias_bancarias');
         $tradeReferences = $request->get('pac_referencias_comerciales');
         $creditCards = $request->get('pac_tarjetas_credito');
-        
+
 
         $holderStatus = $request->get('pac_estado_soporte');
         $ticketNumber = $request->get('pac_numero_ticket');
@@ -194,7 +191,7 @@ Class PAC_Client_Model {
                     . "catcte01 = '" . $category . "' "
                     . "WHERE codcte01 = '" . $code . "';";
         }
-        
+
         $bd->execute($sql);
     }
 
@@ -205,7 +202,7 @@ Class PAC_Client_Model {
         $code = $category = $clientJSONData['pac_codigo']['value'];
         $category = $clientJSONData['pac_categoria']['value'];
         $clientType = $clientJSONData['pac_tipo_cliente']['value'];
-        
+
         $sex = ($clientJSONData['pac_sexo']['value'] == 'M' ? 1 : ($clientJSONData['pac_sexo']['value'] == 'F' ? 0 : 'null') );
         $civilStatus = $clientJSONData['pac_estado_civil']['value'];
         $address = $clientJSONData['bill_street']['value'];
@@ -216,7 +213,7 @@ Class PAC_Client_Model {
             $dateAdmissionAux = DateTime::createFromFormat('m-d-Y', $dateAdmission);
             $dateAdmission = $dateAdmissionAux->format('Y-m-d');
         }
-        
+
         $officePhone = $clientJSONData['otherphone']['value'];
         $homePhone = $clientJSONData['phone']['value'];
         $email = $clientJSONData['email1']['value'];
@@ -248,7 +245,7 @@ Class PAC_Client_Model {
         $withIVA = $clientJSONData['pac_con_iva']['value'] == 'on' ? 'S' : 'N';
         $printBarcode = $clientJSONData['pac_imprimir_barcod']['value'] == 'on' ? 'S' : 'N';
         $accountCountable = $clientJSONData['pac_cuenta_contable']['value'];
-        $companyName = $clientJSONData['pac_tipo_persona']['value'] == 'Natural' ? '' : $clientJSONData['accountname']['value'];  
+        $companyName = $clientJSONData['pac_tipo_persona']['value'] == 'Natural' ? '' : $clientJSONData['accountname']['value'];
 
         $legalRepresentative = $clientJSONData['pac_representante']['value'];
         $rucRepresentative = $clientJSONData['pac_ruc_representante']['value'];
@@ -312,7 +309,7 @@ Class PAC_Client_Model {
                 . "telcte01b = '" . $officePhone . "', "
                 . "catcte01 = '" . $category . "' "
                 . "WHERE codcte01 = '" . $code . "';";
-        
+
         $bd->execute($sql);
     }
 
@@ -382,12 +379,12 @@ Class PAC_Client_Model {
     public function getAccountNameByCatCode($code) {
         $sql = "SELECT cta1cate  FROM `categorias` WHERE `tipocate` = '03' AND codcatep IN (0, 1) AND codcatep NOT IN ('') AND codcate = '" . $code . "';";
         $accountCode = $this->getPACComboElement($sql);
-        $sqlAccount = "SELECT nomcta FROM `maecon` WHERE `ctamaecon` = '". $accountCode ."' ;";
+        $sqlAccount = "SELECT nomcta FROM `maecon` WHERE `ctamaecon` = '" . $accountCode . "' ;";
         $nameAccount = $this->getPACComboElement($sqlAccount);
         if ($nameAccount == 'No encontrado') {
-            return $resultArray = array('0'=>'', '1'=>'');
+            return $resultArray = array('0' => '', '1' => '');
         }
-        return $resultArray = array('0'=>$accountCode, '1'=>$nameAccount);
+        return $resultArray = array('0' => $accountCode, '1' => $nameAccount);
     }
 
     private function getPACComboData($sql) {
@@ -415,9 +412,10 @@ Class PAC_Client_Model {
 
         return $this->getPACComboData($sql);
     }
-    public function getAccountCountableName($code){
-        $sql = "SELECT nomcta FROM `maecon` WHERE `ctamaecon` = '". $code ."';"; 
-        
+
+    public function getAccountCountableName($code) {
+        $sql = "SELECT nomcta FROM `maecon` WHERE `ctamaecon` = '" . $code . "';";
+
         return $this->getPACComboElement($sql);
     }
 

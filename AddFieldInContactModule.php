@@ -231,9 +231,9 @@ $field30->table = 'vtiger_account';
 $field30->column = 'pac_cuotas_vencidas';
 $field30->columntype = 'INT(4)';
 $field30->defaultvalue = 0;
-$field30->uitype = 1;
+$field30->uitype = 7;
 $field30->presence = 2;
-$field30->typeofdata = 'V~O';
+$field30->typeofdata = 'I~O';
 $blockConditions->addField($field30);
 
 $field31 = new Vtiger_Field();
@@ -243,9 +243,9 @@ $field31->table = 'vtiger_account';
 $field31->column = 'pac_dias_vencidos';
 $field31->columntype = 'INT(4)';
 $field31->defaultvalue = 0;
-$field31->uitype = 1;
+$field31->uitype = 7;
 $field31->presence = 2;
-$field31->typeofdata = 'V~O';
+$field31->typeofdata = 'I~O';
 $blockConditions->addField($field31);
 
 $field32 = new Vtiger_Field();
@@ -255,9 +255,9 @@ $field32->table = 'vtiger_account';
 $field32->column = 'pac_limite_cantidad';
 $field32->columntype = 'INT(4)';
 $field32->defaultvalue = 0;
-$field32->uitype = 1;
+$field32->uitype = 7;
 $field32->presence = 2;
-$field32->typeofdata = 'V~O';
+$field32->typeofdata = 'I~O';
 $blockConditions->addField($field32);
 
 $field33 = new Vtiger_Field();
