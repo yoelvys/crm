@@ -191,7 +191,11 @@ Class PAC_Client_Model {
                     . "catcte01 = '" . $category . "' "
                     . "WHERE codcte01 = '" . $code . "';";
         }
+<<<<<<< HEAD
 
+=======
+      
+>>>>>>> 9ba1d398ff4f463c70723227c9d8fad335b9efe9
         $bd->execute($sql);
     }
 
@@ -385,6 +389,16 @@ Class PAC_Client_Model {
             return $resultArray = array('0' => '', '1' => '');
         }
         return $resultArray = array('0' => $accountCode, '1' => $nameAccount);
+    }
+    
+    public function getExistCode($code) {
+        $sql = "SELECT codcte01 FROM `maecte` WHERE `codcte01` = '" . $code . "';";
+        $codeResult = $this->getPACComboElement($sql);
+        if (empty($codeResult)) {
+            return false;
+        } else {
+            return true;
+        }
     }
 
     private function getPACComboData($sql) {
