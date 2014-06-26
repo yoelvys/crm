@@ -126,6 +126,58 @@ Vtiger_Base_Validator_Js("Vtiger_PACRUCRepresentative_Validator_Js", {
 });
 
 
+Vtiger_Base_Validator_Js("Vtiger_PACCode_Validator_Js", {
+    
+    invokeValidation: function(field, rules, i, options) {
+        var codeInstance = new Vtiger_PACCode_Validator_Js();
+            codeInstance.setElement(field);
+        var response = codeInstance.validate();
+        console.log(response);
+        if (response != true) {
+            return codeInstance.getError();
+        }
+    }
+}, {
+    
+    validate: function(){
+            var fieldValue = this.getFieldValue();
+           
+            return this.validateValue(fieldValue);
+    },
+
+    validateValue : function(fieldValue) { 
+        var result;
+        var este = this;
+        $.ajax({
+            type: 'post',
+            url: 'getExistCode.php',
+            async: false,
+            data: {inputValue: fieldValue},
+            success: function(data) {
+                if (data == '1') { 
+                    result = false;
+                } else {
+                    result = true;
+                }
+            },
+            error: function(obj, resultCode, c) {
+                console.log(resultCode);
+                result = false;
+            }
+        });
+        if (result) {
+            return true;
+        } else {
+            var errorInfo = 'Código existente';
+            este.setError(errorInfo);
+            return false;
+        }
+    }
+    
+   
+    
+});
+
 
 
 Vtiger_Base_Validator_Js("Vtiger_Email_Validator_Js",{
