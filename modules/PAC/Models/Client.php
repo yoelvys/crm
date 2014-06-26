@@ -191,11 +191,7 @@ Class PAC_Client_Model {
                     . "catcte01 = '" . $category . "' "
                     . "WHERE codcte01 = '" . $code . "';";
         }
-<<<<<<< HEAD
 
-=======
-      
->>>>>>> 9ba1d398ff4f463c70723227c9d8fad335b9efe9
         $bd->execute($sql);
     }
 
